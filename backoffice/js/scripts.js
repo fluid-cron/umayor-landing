@@ -8,31 +8,79 @@
     ];
     */
  
-    var countries = [
+    /*var countries = [
         { Name: "", Id: 0 },
         { Name: "United States", Id: 1 },
         { Name: "Canada", Id: 2 },
         { Name: "United Kingdom", Id: 3 }
-    ];
- 
-    $("#jsGrid").jsGrid({
+    ];*/
+    
+    $.ajax({
+        type: "GET",
+        url: "obtenerUnidades/"
+    }).done(function(unidades) {
         
-        width: "100%",
-        height: "400px",
- 
-        inserting: true,
-        editing: true,
-        sorting: true,
-        paging: true,
- 
-        //data: clients,
- 
-        fields: [
-            { name: "Unidad", type: "select", items: countries, validate: "required" },
-            { name: "Area", type: "select", items: countries, validate: "required" },
-            { name: "Carrera u otro", items: countries, type: "select", validate: "required" },
-            //{ name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name" },
-            //{ name: "Married", type: "checkbox", title: "Is Married", sorting: false },
-            { type: "control", width: 10 }
-        ]
+       $.ajax({
+            type: "GET",
+            url: "obtenerAreas/"
+        }).done(function(areas) {    
+        
+        $.ajax({
+             type: "GET",
+             url: "obtenerCarreras/"
+         }).done(function(carreras) {
+
+            $("#jsGrid").jsGrid({
+
+                height: "90%",
+                width: "100%",
+
+                inserting: true,
+                editing: true,
+                sorting: true,
+                paging: true,
+                autoload: true,
+                filtering: true,
+
+                deleteConfirm: "Do you really want to delete the client?",
+
+                pageSize: 30,
+                pageButtonCount: 5,
+                
+                controller: {
+                    loadData: function(filter) {
+                        return $.ajax({
+                            type: "GET",
+                            url: "obtenerOpciones/",
+                            data: filter
+                        });
+                    }      
+                },               
+                
+                /*insertItem: function(item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "guardarOpciones/",
+                        data: item
+                    });
+                },*/                
+
+                //data: clients,
+
+                fields: [
+                    { name: "Unidad", type: "select", items: unidades, title: "Unidad", valueField: "id_unidad", textField: "nombre_unidad" ,validate: "required" },
+                    { name: "Area", type: "select", items: areas, title: "Area", valueField: "id_area", textField: "nombre_area" ,validate: "required" },
+                    { name: "Carrera u otro", type: "select", title: "Carrera u otro", items: carreras, valueField: "id_carrera", textField: "nombre_carrera" ,validate: "required" },
+                    //{ name: "Disponible", type: "checkbox", title: "Disponible", sorting: false },
+                    { 
+                        type: "control", 
+                        width: 10
+                    }
+                ]
+            });
+
+        });
+
     });
+    
+});

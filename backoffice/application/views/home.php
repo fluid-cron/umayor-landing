@@ -1,1 +1,7 @@
-<div id="jsGrid"></div>
+<div id="container">
+
+	<div id="body">
+            Hola Mundo            
+	</div>
+	
+</div>
