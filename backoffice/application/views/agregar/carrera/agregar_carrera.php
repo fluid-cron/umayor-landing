@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="inputUnidad" class="col-sm-2 control-label">Unidad</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputUnidad" name="carrera" placeholder="Ingresa aquí la area">
+                        <input type="text" class="form-control" id="inputUnidad" name="carrera" placeholder="Ingresa aquí la carrera">
                     </div>
                 </div>
              
