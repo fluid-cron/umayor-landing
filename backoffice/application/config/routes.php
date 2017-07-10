@@ -50,22 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'app';
-/*
- * views
- */
-$route['agregar'] = 'app/agregar';
-$route['editar']  = 'app/editar';
-/*
- * Model
- */
-$route['obtenerUnidades']  = 'data/obtenerUnidades';
 
-$route['obtenerAreas']     = 'data/obtenerAreas';
+$route['register'] = 'user/register';
+$route['login']    = 'user/login';
+$route['logout']   = 'user/logout';
 
-$route['obtenerCarreras']  = 'data/obtenerCarreras';
+$route['asignar'] = 'app/asignar';
 
-$route['obtenerOpciones']  = 'data/obtenerOpciones';
-$route['guardarOpciones']  = 'data/guardarOpciones';
+$route['agregar/unidad']  = 'app/agregarUnidad';
+$route['agregar/area']    = 'app/agregarArea';
+$route['agregar/carrera'] = 'app/agregarCarrera';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

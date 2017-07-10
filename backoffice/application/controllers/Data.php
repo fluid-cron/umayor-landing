@@ -8,64 +8,28 @@ class Data extends CI_Controller {
     }
     
     public function index() {
-        return 0;
-    }
-    
-    public function obtenerUnidades() {
-        
-        $this->load->model('Unidad_model','unidad');
-
-        $data = $this->unidad->getAll();
-        
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
-        
-    }
-
-    public function obtenerAreas() {
-        
-        $this->load->model('Area_model','area');
-
-        $data = $this->area->getAll();
-        
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
         
     }
     
-    public function obtenerCarreras() {
+    public function editarEstadoOpciones() {
         
-        $this->load->model('Carrera_model','carrera');
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        
+            $this->load->model('Opcion_model','opcion');
 
-        $data = $this->carrera->getAll();
+            $id = $this->input->post("id");
+
+            if( $id!="" ) {
+               $data = $this->opcion->editarEstadoOpciones($id);
+               echo $data;
+            }else{
+                echo "err";
+            }
+
+        }else{
+            echo "err";
+        }
         
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
-        
-    }
-    
-    public function obtenerOpciones() {
-        
-        $this->load->model('Opcion_model','opcion');
-        
-        $data = $this->opcion->getAll();
-        
-        //print_r($data);
-        
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
-                
-    }    
-    
-    public function guardarOpciones() {
-        
-        $this->load->model('Opcion_model','opcion');
-        
-        echo "dasd";
-    }
+    }       
     
 }

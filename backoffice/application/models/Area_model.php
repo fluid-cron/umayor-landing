@@ -19,9 +19,36 @@ class Area_model extends CI_Model {
     
     public function getAll() {
         
+        $this->db->order_by('nombre_area', 'ASC');
         $query = $this->db->get('areas');
         return $query->result_array();
         
     }
+    
+    public function agregarArea($area) {
+        
+        $this->db->select('*')
+             ->from('areas')
+             ->where('nombre_area = "'.$area.'"');
+        
+        $cantidad = $this->db->count_all_results();       
+        
+        if( $cantidad==0 ) {
+            
+            $data = array(
+                'nombre_area'  => $area
+            );
+
+            if( $this->db->insert('areas', $data) ) {
+                return "ok";
+            }else{
+                return "error";
+            }
+            
+        }else{
+            return "ya existe";
+        }      
+        
+    }    
 
 }
