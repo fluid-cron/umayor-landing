@@ -240,37 +240,5 @@ class App extends CI_Controller {
         }
         
     }    
-    
-    /*public function agregarArea() {
-        
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-        
-            $data_header["title"] = "Agregar Area";         
-
-            $this->load->view('header',$data_header);
-            $this->load->view('agregar/agregar_area');
-            $this->load->view('footer');            
-        
-        }else{
-            redirect('login');
-        }
-        
-    }   
-    
-    public function agregarCarrera() {
-        
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-        
-            $data_header["title"] = "Agregar Carrera";         
-
-            $this->load->view('header',$data_header);
-            $this->load->view('agregar/agregar_carrera');
-            $this->load->view('footer');   
-        
-        }else{
-            redirect('login');
-        }        
-        
-    }        
-    */ 
+       
 }
