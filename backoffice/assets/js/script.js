@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
    $(".checkbox-estado").click(function() {
        
        var ele = $(this).val();
@@ -12,4 +13,9 @@ $(document).ready(function(){
         });       
        
    });
+   
+   $("#select-unidad").select2();
+   $("#select-area").select2();
+   $("#select-carrera").select2();
+   
 });

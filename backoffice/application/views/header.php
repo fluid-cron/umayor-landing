@@ -9,6 +9,7 @@
 
 	<!-- css -->
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
+        <link href="<?php echo base_url('assets/js/select2/css/select2.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
 
 	<!--[if lt IE 9]>

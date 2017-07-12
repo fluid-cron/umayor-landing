@@ -27,10 +27,10 @@
               <div class="form-group form-group-md">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">Unidad</label>
                 <div class="col-sm-10">
-                    <select class="form-control input-md" name="unidad" >
+                    <select class="form-control input-md" name="unidad" id="select-unidad" >
                         <option value="">Seleccionar Unidad</option>
                         <?php foreach ($unidades as $unidad): ?>
-                        <option value="<?php echo $unidad['id_unidad'];?>" <?php if( set_value('unidad')==$unidad['id_unidad'] ) { echo 'selected'; } ?> ><?php echo ucwords(strtolower($unidad['nombre_unidad']));?></option>
+                        <option value="<?php echo $unidad['id_unidad'];?>" <?php if( set_value('unidad')==$unidad['id_unidad'] ) { echo 'selected'; } ?> ><?php echo $unidad['nombre_unidad'];?></option>
                         <?php endforeach; ?>   
                     </select>  
                 </div>
@@ -38,10 +38,10 @@
               <div class="form-group form-group-md">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">Area</label>
                 <div class="col-sm-10">
-                    <select class="form-control input-md" name="area">
+                    <select class="form-control input-md" name="area" id="select-area">
                         <option value="">Seleccionar Area</option>
                         <?php foreach ($areas as $area): ?>
-                        <option value="<?php echo $area['id_area'];?>" <?php if( set_value('area')==$area['id_area'] ) { echo 'selected'; } ?>><?php echo ucwords(strtolower($area['nombre_area']));?></option>
+                        <option value="<?php echo $area['id_area'];?>" <?php if( set_value('area')==$area['id_area'] ) { echo 'selected'; } ?>><?php echo $area['nombre_area'];?></option>
                         <?php endforeach; ?>  
                     </select>  
                 </div>
@@ -49,10 +49,10 @@
               <div class="form-group form-group-md">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">Carrera u otro</label>
                 <div class="col-sm-10">
-                    <select class="form-control input-md" name="carrera">
+                    <select class="form-control input-md" name="carrera" id="select-carrera">
                         <option value="">Seleccionar Carrera u Otro</option>
                         <?php foreach ($carreras as $carrera): ?>
-                        <option value="<?php echo $carrera['id_carrera'];?>" <?php if( set_value('carrera')==$carrera['id_carrera'] ) { echo 'selected'; } ?>><?php echo ucwords(strtolower($carrera['nombre_carrera']));?></option>
+                        <option value="<?php echo $carrera['id_carrera'];?>" <?php if( set_value('carrera')==$carrera['id_carrera'] ) { echo 'selected'; } ?>><?php echo $carrera['nombre_carrera'];?></option>
                         <?php endforeach; ?>  
                     </select>  
                 </div>
