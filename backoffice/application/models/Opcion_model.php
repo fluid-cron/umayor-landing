@@ -36,6 +36,34 @@ class Opcion_model extends CI_Model {
         return $query->result_array();         
         
     }
+
+    public function fetch_data($limit, $page) {  
+        
+        $offset = ($page-1)*$limit;        
+        $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
+             ->from('umayor_convenios.opciones o')
+             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
+             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->limit($limit, $offset)
+             ->order_by('id', 'DESC');
+        $query = $this->db->get();
+        return $query->result_array(); 
+        
+    }    
+    
+    public function record_count() {
+
+        $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
+             ->from('umayor_convenios.opciones o')
+             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
+             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->order_by('id', 'DESC');
+        
+        return $this->db->count_all_results();
+        
+    }
     
     public function editarEstadoOpciones($id) {
 

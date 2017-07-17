@@ -49,6 +49,19 @@ class Area_model extends CI_Model {
             return "ya existe";
         }      
         
+    }   
+    
+    public function editarArea($area,$new_area) {
+
+        $this->db->set('nombre_area', $new_area);
+        $this->db->where('id_area', $area);
+        
+        if( $this->db->update('areas') ) {
+            return "ok";
+        }else{
+            return "error";
+        }                        
+        
     }    
 
 }

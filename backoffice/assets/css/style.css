@@ -5,3 +5,7 @@
 #formx label{
     text-align: initial;
 }
+
+.input_new {
+    border-color: #AAAAAA;
+}

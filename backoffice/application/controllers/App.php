@@ -27,11 +27,39 @@ class App extends CI_Controller {
         
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             
+            $this->load->library('pagination');
             $this->load->model('Opcion_model','opcion');
-        
+
+            $config = array();
+            $config["base_url"] = base_url() . "/opciones";
+            $total_row = $this->opcion->record_count();
+            $config["total_rows"] = $total_row;
+            $config["per_page"] = 5;
+            $config['use_page_numbers'] = TRUE;
+            $config['num_links'] = $total_row;
+            $config['cur_tag_open'] = '&nbsp;<a class="current">';
+            $config['cur_tag_close'] = '</a>';
+            $config['next_link'] = '&raquo;';
+            $config['prev_link'] = '&laquo;';
+            //$config['cur_tag_open'] = '<a class="active">';
+            
+            $this->pagination->initialize($config);
+            
+            if($this->uri->segment(2)) {
+                $page = ($this->uri->segment(2));
+            }else{
+                $page = 1;
+            }            
+
+            $data["opciones"] = $this->opcion->fetch_data($config["per_page"], $page);
+            
+            $str_links = $this->pagination->create_links();
+            
+            $data["links"] = explode('&nbsp;',$str_links );                       
+
             $data_header["title"] = "Opciones";                        
             
-            $data["opciones"] = $this->opcion->getAll();
+            //$data["opciones"] = $this->opcion->getAll();
             
             $this->load->view('header',$data_header);
             $this->load->view('opciones',$data);
@@ -261,7 +289,7 @@ class App extends CI_Controller {
         
     }
     
-    public function editarUnidad() {                
+    public function editarUnidad() {
         
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             
@@ -271,6 +299,7 @@ class App extends CI_Controller {
             $new_unidad = $this->input->post("new_unidad");
             
             $this->form_validation->set_rules('unidad', 'Unidad', 'trim|required');
+            $this->form_validation->set_rules('new_unidad', 'nuevo nombre', 'trim|required');
             
             $data_header["title"] = "Editar Unidad";  
             
@@ -284,27 +313,21 @@ class App extends CI_Controller {
             
             } else {
                 
-                $result = $this->unidad->agregarUnidad($unidad);
+                $result = $this->unidad->editarUnidad($unidad,$new_unidad);
                 
                 if($result=="ok") {
                 
                     $this->load->view('header',$data_header);
-                    $this->load->view('agregar/unidad/agregar_unidad_success');
+                    $this->load->view('editar/unidad/editar_unidad_success');
                     $this->load->view('footer');
                 
                 }else if($result=="error") {
                     
                     $this->load->view('header',$data_header);
-                    $this->load->view('agregar/unidad/agregar_unidad_error');
+                    $this->load->view('editar/unidad/editar_unidad_error');
                     $this->load->view('footer');                    
                     
-                }else if($result=="ya existe") {
-                    
-                    $this->load->view('header',$data_header);
-                    $this->load->view('agregar/unidad/agregar_unidad_ya_existe');
-                    $this->load->view('footer');                      
-                    
-                }                                
+                }                              
                 
             }
 
@@ -313,5 +336,101 @@ class App extends CI_Controller {
         }
         
     }    
+    
+    public function editarArea() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            
+            $this->load->model('Area_model','area');
+        
+            $area  = $this->input->post("area");
+            $new_area = $this->input->post("new_area");
+            
+            $this->form_validation->set_rules('area', 'Area', 'trim|required');
+            $this->form_validation->set_rules('new_area', 'nuevo nombre', 'trim|required');
+            
+            $data_header["title"] = "Editar Area";  
+            
+            $data["areas"] = $this->area->getAll();           
+
+            if ($this->form_validation->run() === false) {
+
+                $this->load->view('header',$data_header);
+                $this->load->view('editar/area/editar',$data);
+                $this->load->view('footer');            
+            
+            } else {
+                
+                $result = $this->area->editarArea($area,$new_area);
+                
+                if($result=="ok") {
+                
+                    $this->load->view('header',$data_header);
+                    $this->load->view('editar/area/editar_area_success');
+                    $this->load->view('footer');
+                
+                }else if($result=="error") {
+                    
+                    $this->load->view('header',$data_header);
+                    $this->load->view('editar/area/editar_area_error');
+                    $this->load->view('footer');                    
+                    
+                }                              
+                
+            }
+
+        }else{
+            redirect('login');
+        }
+        
+    }    
+    
+    public function editarCarrera() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            
+            $this->load->model('Carrera_model','carrera');
+        
+            $carrera  = $this->input->post("carrera");
+            $new_carrera = $this->input->post("new_carrera");
+            
+            $this->form_validation->set_rules('carrera', 'Carrera', 'trim|required');
+            $this->form_validation->set_rules('new_carrera', 'nuevo nombre', 'trim|required');
+            
+            $data_header["title"] = "Editar Carrera";  
+            
+            $data["carreras"] = $this->carrera->getAll();           
+
+            if ($this->form_validation->run() === false) {
+
+                $this->load->view('header',$data_header);
+                $this->load->view('editar/carrera/editar',$data);
+                $this->load->view('footer');            
+            
+            } else {
+                
+                $result = $this->carrera->editarCarrera($carrera,$new_carrera);
+                
+                if($result=="ok") {
+                
+                    $this->load->view('header',$data_header);
+                    $this->load->view('editar/carrera/editar_carrera_success');
+                    $this->load->view('footer');
+                
+                }else if($result=="error") {
+                    
+                    $this->load->view('header',$data_header);
+                    $this->load->view('editar/carrera/editar_carrera_error');
+                    $this->load->view('footer');                    
+                    
+                }                              
+                
+            }
+
+        }else{
+            redirect('login');
+        }
+        
+    }        
        
 }

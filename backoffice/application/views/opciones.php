@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12 page-header" >
             <h1>Editar Opciones <small>habilitar o deshabilitar</small></h1>
-        </div>        
+        </div>    
     </div>
     <div class="row" >        
         <div class="col-md-12" >            
@@ -30,6 +30,15 @@
                 </tr>
                 <?php endforeach; ?>           
             </table>            
+        </div>
+        <div class="col-md-12">            
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <?php foreach ($links as $link) {
+                    echo "<li>". $link."</li>";
+                } ?>            
+              </ul>
+            </nav>                                  
         </div>
     </div>
 </div>

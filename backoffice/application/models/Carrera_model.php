@@ -50,6 +50,19 @@ class Carrera_model extends CI_Model {
             return "ya existe";
         }      
         
+    }    
+
+    public function editarCarrera($carrera,$new_carrera) {
+
+        $this->db->set('nombre_carrera', $new_carrera);
+        $this->db->where('id_carrera', $carrera);
+        
+        if( $this->db->update('carreras_cursos_programas') ) {
+            return "ok";
+        }else{
+            return "error";
+        }                        
+        
     }        
 
 }

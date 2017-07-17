@@ -49,6 +49,19 @@ class Unidad_model extends CI_Model {
             return "ya existe";
         }      
         
-    }    
+    } 
+    
+    public function editarUnidad($unidad,$new_unidad) {
+
+        $this->db->set('nombre_unidad', $new_unidad);
+        $this->db->where('id_unidad', $unidad);
+        
+        if( $this->db->update('unidades') ) {
+            return "ok";
+        }else{
+            return "error";
+        }                        
+        
+    }
 
 }
