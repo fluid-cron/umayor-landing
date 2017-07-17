@@ -61,6 +61,10 @@ $route['agregar/unidad']  = 'app/agregarUnidad';
 $route['agregar/area']    = 'app/agregarArea';
 $route['agregar/carrera'] = 'app/agregarCarrera';
 
+$route['editar/unidad']  = 'app/editarUnidad';
+$route['editar/area']    = 'app/editarArea';
+$route['editar/carrera'] = 'app/editarCarrera';
+
 $route['opciones'] = 'app/opciones';
 
 $route['404_override'] = '';

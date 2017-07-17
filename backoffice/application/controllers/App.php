@@ -259,6 +259,59 @@ class App extends CI_Controller {
             redirect('login');
         }
         
+    }
+    
+    public function editarUnidad() {                
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            
+            $this->load->model('Unidad_model','unidad');
+        
+            $unidad  = $this->input->post("unidad");
+            $new_unidad = $this->input->post("new_unidad");
+            
+            $this->form_validation->set_rules('unidad', 'Unidad', 'trim|required');
+            
+            $data_header["title"] = "Editar Unidad";  
+            
+            $data["unidades"] = $this->unidad->getAll();           
+
+            if ($this->form_validation->run() === false) {
+
+                $this->load->view('header',$data_header);
+                $this->load->view('editar/unidad/editar',$data);
+                $this->load->view('footer');            
+            
+            } else {
+                
+                $result = $this->unidad->agregarUnidad($unidad);
+                
+                if($result=="ok") {
+                
+                    $this->load->view('header',$data_header);
+                    $this->load->view('agregar/unidad/agregar_unidad_success');
+                    $this->load->view('footer');
+                
+                }else if($result=="error") {
+                    
+                    $this->load->view('header',$data_header);
+                    $this->load->view('agregar/unidad/agregar_unidad_error');
+                    $this->load->view('footer');                    
+                    
+                }else if($result=="ya existe") {
+                    
+                    $this->load->view('header',$data_header);
+                    $this->load->view('agregar/unidad/agregar_unidad_ya_existe');
+                    $this->load->view('footer');                      
+                    
+                }                                
+                
+            }
+
+        }else{
+            redirect('login');
+        }
+        
     }    
        
 }

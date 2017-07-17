@@ -45,6 +45,14 @@
                                                                 <li><a href="<?= base_url('agregar/carrera') ?>">Carrera</a></li>
                                                             </ul>
                                                         </li>
+                                                        <li class="dropdown">
+                                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Editar <span class="caret"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="<?= base_url('editar/unidad') ?>">Unidad</a></li>
+                                                                <li><a href="<?= base_url('editar/area') ?>">Area</a></li>
+                                                                <li><a href="<?= base_url('editar/carrera') ?>">Carrera</a></li>
+                                                            </ul>
+                                                        </li>                                                        
                                                         <li><a href="<?= base_url('logout') ?>">Logout</a></li>
 						<?php else : ?>							
 							<li><a href="<?= base_url('login') ?>">Login</a></li>
