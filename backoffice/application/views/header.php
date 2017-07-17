@@ -34,7 +34,8 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
-                                                        <li><a href="<?= base_url('/') ?>">Home</a></li>  
+                                                        <li><a href="<?= base_url('/') ?>">Registros</a></li>  
+                                                        <li><a href="<?= base_url('/opciones') ?>">Opciones</a></li>
                                                         <li><a href="<?= base_url('/asignar') ?>">Asignar</a></li>
                                                         <li class="dropdown">
                                                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Agregar <span class="caret"></span></a>

@@ -61,5 +61,7 @@ $route['agregar/unidad']  = 'app/agregarUnidad';
 $route['agregar/area']    = 'app/agregarArea';
 $route['agregar/carrera'] = 'app/agregarCarrera';
 
+$route['opciones'] = 'app/opciones';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

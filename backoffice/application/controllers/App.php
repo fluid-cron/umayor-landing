@@ -23,6 +23,26 @@ class App extends CI_Controller {
         
     }
     
+    public function opciones() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            
+            $this->load->model('Opcion_model','opcion');
+        
+            $data_header["title"] = "Opciones";                        
+            
+            $data["opciones"] = $this->opcion->getAll();
+            
+            $this->load->view('header',$data_header);
+            $this->load->view('opciones',$data);
+            $this->load->view('footer');
+
+        } else {
+            redirect("login");
+        }        
+        
+    }
+    
     public function asignar() {
         
         $this->load->model('Opcion_model','opcion');

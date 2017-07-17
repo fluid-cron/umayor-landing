@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 page-header" >
-            <h1>Registros Formulario</h1>
+            <h1>Editar Opciones <small>habilitar o deshabilitar</small></h1>
         </div>        
     </div>
     <div class="row" >        
