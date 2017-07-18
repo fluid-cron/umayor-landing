@@ -37,8 +37,7 @@ class Opcion_model extends CI_Model {
         
     }
 
-    public function fetch_data($limit, $page,$q) {
-        
+    public function fetch_data($limit, $page,$q) {        
         
         $offset = ($page-1)*$limit;        
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
@@ -132,7 +131,5 @@ class Opcion_model extends CI_Model {
         }      
         
     }
-    
-    
 
 }
