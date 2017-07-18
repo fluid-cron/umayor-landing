@@ -1,4 +1,6 @@
-$(document).ready(function(){
+var base_url = $('#base_url').val();
+
+$(document).ready(function() {
     
    $(".checkbox-estado").click(function() {
        
@@ -6,7 +8,7 @@ $(document).ready(function(){
        
         $.ajax({
           method: "POST",
-          url: "data/editarEstadoOpciones",
+          url: base_url+"data/editarEstadoOpciones",
           data: { id: ele }
         }).done(function( msg ) {
             console.log( msg );

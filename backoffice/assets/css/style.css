@@ -9,3 +9,7 @@
 .input_new {
     border-color: #AAAAAA;
 }
+
+.pagination {
+    margin: 0;
+}

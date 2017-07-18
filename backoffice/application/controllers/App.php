@@ -9,7 +9,7 @@ class App extends CI_Controller {
             
             $this->load->model('Opcion_model','opcion');
         
-            $data_header["title"] = "Home";                        
+            $data_header["title"] = "Home";
             
             $data["opciones"] = $this->opcion->getAll();
             
@@ -27,39 +27,50 @@ class App extends CI_Controller {
         
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             
+            $q = $this->input->get("q");
+            
             $this->load->library('pagination');
             $this->load->model('Opcion_model','opcion');
 
-            $config = array();
-            $config["base_url"] = base_url() . "/opciones";
-            $total_row = $this->opcion->record_count();
-            $config["total_rows"] = $total_row;
-            $config["per_page"] = 5;
-            $config['use_page_numbers'] = TRUE;
-            $config['num_links'] = $total_row;
-            $config['cur_tag_open'] = '&nbsp;<a class="current">';
-            $config['cur_tag_close'] = '</a>';
-            $config['next_link'] = '&raquo;';
-            $config['prev_link'] = '&laquo;';
-            //$config['cur_tag_open'] = '<a class="active">';
+            $total_row                  = $this->opcion->record_count($q);
             
+            $config = array();
+            $config["base_url"]         = base_url() . "/opciones/";
+            $config['suffix']           = '?'.http_build_query($_GET,'', "&");            
+            $config["total_rows"]       = $total_row;
+            $config["per_page"]         = 10;
+            $config['num_links']        = 2;
+            $config['use_page_numbers'] = TRUE;
+            $config['next_link']        = '&raquo;';
+            $config['prev_link']        = '&laquo;';
+            $config['first_tag_open']   = '<li class="prev page">';
+            $config['first_tag_close']  = '</li>';
+            $config['last_tag_open']    = '<li class="next page">';
+            $config['last_tag_close']   = '</li>';
+            $config['next_tag_open']    = '<li class="next page">';
+            $config['next_tag_close']   = '</li>';
+            $config['prev_tag_open']    = '<li class="prev page">';
+            $config['prev_tag_close']   = '</li>';
+            $config['cur_tag_open']     = '<li class="active"><a href="">';
+            $config['cur_tag_close']    = '</a></li>';
+            $config['num_tag_open']     = '<li class="page">';
+            $config['num_tag_close']    = '</li>';            
+            $config['first_url']        = $config['base_url'] . $config['suffix'];
+                        
             $this->pagination->initialize($config);
             
             if($this->uri->segment(2)) {
                 $page = ($this->uri->segment(2));
             }else{
                 $page = 1;
-            }            
+            }
 
-            $data["opciones"] = $this->opcion->fetch_data($config["per_page"], $page);
+            $data["opciones"] = $this->opcion->fetch_data($config["per_page"], $page,$q);            
+            $str_links        = $this->pagination->create_links();            
+            $data["links"]    = explode('&nbsp;',$str_links ); 
+            $data["q"]        = $q;
             
-            $str_links = $this->pagination->create_links();
-            
-            $data["links"] = explode('&nbsp;',$str_links );                       
-
-            $data_header["title"] = "Opciones";                        
-            
-            //$data["opciones"] = $this->opcion->getAll();
+            $data_header["title"] = "Opciones";                                    
             
             $this->load->view('header',$data_header);
             $this->load->view('opciones',$data);

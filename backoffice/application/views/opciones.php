@@ -1,8 +1,34 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12 page-header" >
-            <h1>Editar Opciones <small>habilitar o deshabilitar</small></h1>
+        <div class="col-md-12" >
+            <h1>Editar Opciones <small>habilitar o deshabilitar</small></h1>          
         </div>    
+    </div>
+    <div class="row" >
+        <div class="col-md-12" >
+            
+            <div class="visible-sm visible-md visible-lg">
+                <form action="<?php echo base_url().'opciones/';?>" class="navbar-form navbar-left pull-right" style="padding-right: 0px;" >
+                  <div class="form-group">
+                    <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
+                  </div>
+                  <button type="submit" class="btn btn-default">Buscar</button>
+                  <button type="button" onclick="location.href='<?php echo base_url().'opciones/';?>'" class="btn btn-default">x</button>              
+                </form>  
+            </div>            
+            
+            <div class="hidden-sm hidden-md hidden-lg">           
+                <form action="<?php echo base_url().'opciones/';?>" class="navbar-form navbar-left" >
+                  <div class="form-group">
+                    <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
+                  </div>                  
+                  <button type="button" onclick="location.href='<?php echo base_url().'opciones/';?>'" class="btn btn-default pull-right">x</button>              
+                  <button type="submit" class="btn btn-default pull-right">Buscar</button>
+                </form>
+                <br>  
+            </div> 
+            
+        </div>
     </div>
     <div class="row" >        
         <div class="col-md-12" >            
@@ -33,12 +59,13 @@
         </div>
         <div class="col-md-12">            
             <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul class="pagination pull-right">
                 <?php foreach ($links as $link) {
-                    echo "<li>". $link."</li>";
+                    echo $link;
                 } ?>            
               </ul>
             </nav>                                  
-        </div>
+            <br><br><br>
+        </div>        
     </div>
 </div>

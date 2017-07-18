@@ -37,7 +37,8 @@ class Opcion_model extends CI_Model {
         
     }
 
-    public function fetch_data($limit, $page) {  
+    public function fetch_data($limit, $page,$q) {
+        
         
         $offset = ($page-1)*$limit;        
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
@@ -45,6 +46,9 @@ class Opcion_model extends CI_Model {
              ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
              ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
              ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->like('u.nombre_unidad', $q)
+             ->or_like('a.nombre_area', $q)
+             ->or_like('c.nombre_carrera', $q)    
              ->limit($limit, $offset)
              ->order_by('id', 'DESC');
         $query = $this->db->get();
@@ -52,13 +56,16 @@ class Opcion_model extends CI_Model {
         
     }    
     
-    public function record_count() {
+    public function record_count($q) {
 
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
              ->from('umayor_convenios.opciones o')
              ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
              ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
              ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->like('u.nombre_unidad', $q)
+             ->or_like('a.nombre_area', $q)
+             ->or_like('c.nombre_carrera', $q)                  
              ->order_by('id', 'DESC');
         
         return $this->db->count_all_results();

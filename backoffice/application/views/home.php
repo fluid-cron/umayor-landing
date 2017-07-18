@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12 page-header" >
+        <div class="col-md-12" >
             <h1>Registros Formulario</h1>
         </div>        
     </div>
