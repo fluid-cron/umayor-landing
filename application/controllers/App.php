@@ -8,19 +8,36 @@ class App extends CI_Controller {
         $this->load->model("App_model","app");
         
         $unidades = $this->app->getUnidades();
-        //$areas = $this->app->getAreas(1);
-        //$carreras = $this->app->getCarreras(32);
         
         $data_header = array(
             'title'=>'Landing Convenios'
         );
-        
+
         $data['unidades'] = $unidades;
 
         $this->parser->parse('template/header',$data_header);
         $this->load->view('home',$data);
         $this->load->view('template/footer');
 
+    }
+    
+    public function guardarFormulario() {
+        
+        $this->load->model("Registro_model","registro");
+        
+        $nombre  = trim($this->input->post("nombre"));
+        $email   = trim($this->input->post("email"));
+        $celular = trim($this->input->post("celular"));
+        $unidad  = trim($this->input->post("unidades"));
+        $area    = trim($this->input->post("areas"));
+        $carrera = trim($this->input->post("carreras"));
+        
+        if( $nombre!="" && $email!="" && $celular!="" && $unidad!="" && $area!="" && $carrera!="" ) {
+            echo $this->registro->guardarFormulario();
+        }else{
+            echo "vacio";
+        }
+        
     }
 
 }

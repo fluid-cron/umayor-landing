@@ -97,14 +97,15 @@ class App extends CI_Controller {
             $carrera = $this->input->post("carrera");            
             
             $this->form_validation->set_rules('unidad', 'Unidad', 'trim|required');
+            $this->form_validation->set_rules('area', 'Area', 'trim|required');
             
             $this->form_validation->set_rules('carrera', 'Carrera', 'trim');
             
-            if( $carrera!="" ) {
+            /*if( $carrera!="" ) {
                 $this->form_validation->set_rules('area', 'Area', 'trim|required');
             }else{
                 $this->form_validation->set_rules('area', 'Area', 'trim');
-            }
+            }*/
             
             $data_header["title"] = "Asignar"; 
             

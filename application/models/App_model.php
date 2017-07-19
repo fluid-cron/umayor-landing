@@ -11,13 +11,14 @@
  *
  * @author cronstudio_manuel
  */
-class App_model extends CI_Model { 
+class App_model extends CI_Model {
     
     public function getUnidades() {
         
         $this->db->select('u.id_unidad as id,u.nombre_unidad as nombre')
                  ->from('unidades AS u, opciones AS o')
                  ->where('u.id_unidad=o.id_unidad')
+                 ->where('o.estado=1')
                  ->group_by('u.nombre_unidad')
                  ->order_by('u.nombre_unidad','asc');
                 
@@ -32,6 +33,7 @@ class App_model extends CI_Model {
                  ->from('umayor_convenios.opciones as o,umayor_convenios.areas as a')
                  ->where('o.id_unidad='.$id)
                  ->where('o.id_area=a.id_area')
+                 ->where('o.estado=1')
                  ->group_by('a.nombre_area')
                  ->order_by('a.nombre_area','asc');
 
@@ -46,12 +48,13 @@ class App_model extends CI_Model {
                  ->from('umayor_convenios.opciones as o,umayor_convenios.carreras_cursos_programas as c')
                  ->where('o.id_area='.$id)
                  ->where('o.id_carrera=c.id_carrera')
+                 ->where('o.estado=1')
                  ->group_by('c.nombre_carrera')
                  ->order_by('c.nombre_carrera','asc');
 
         $query = $this->db->get();
         return $query->result_array();
 
-    }    
+    }
 
 }

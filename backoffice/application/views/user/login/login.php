@@ -15,7 +15,8 @@
 				</div>
 			</div>
 		<?php endif; ?>
-		<div class="col-md-12">
+                <div class="col-md-4 hidden-xs"></div>
+		<div class="col-xs-12 col-md-4">
 			<div class="page-header">
 				<h1>Login</h1>
 			</div>
@@ -33,5 +34,6 @@
 				</div>
 			</form>
 		</div>
+                <div class="col-md-4 hidden-xs" ></div>
 	</div><!-- .row -->
 </div><!-- .container -->

@@ -26,7 +26,7 @@
               <?php echo form_open('',$attributes) ?>
 
                 <div class="form-group">
-                    <label for="inputUnidad" class="col-sm-2 control-label">Unidad</label>
+                    <label for="inputUnidad" class="col-sm-2 control-label">Area</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputUnidad" name="area" placeholder="Ingresa aquí la area">
                     </div>

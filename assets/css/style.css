@@ -1,0 +1,21 @@
+.error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    background-color: #f44336;
+    color: #fff; 
+}
+.error::-moz-placeholder { /* Firefox 19+ */
+    background-color: #f44336;
+    color: #fff; 
+}
+.error:-ms-input-placeholder { /* IE 10+ */
+    background-color: #f44336;
+    color: #fff; 
+}
+.error:-moz-placeholder { /* Firefox 18- */
+    background-color: #f44336;
+    color: #fff; 
+}
+
+.error {
+    background-color: #f44336;
+    color: #fff; 
+}
