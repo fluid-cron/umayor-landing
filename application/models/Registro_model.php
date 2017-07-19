@@ -19,16 +19,21 @@ class Registro_model extends CI_Model {
     public $id_unidad;
     public $id_area;
     public $id_carrera;
+    public $origen = "desktop";
     public $fecha;
     
     public function guardarFormulario() {
+        
+        if ($this->agent->is_mobile('iphone')) {
+            $this->origen = "mobile";
+        }
         
         $this->nombre     = $this->input->post("nombre");
         $this->email      = $this->input->post("email");
         $this->celular    = $this->input->post("celular");
         $this->id_unidad  = $this->input->post("unidades");
         $this->id_area    = $this->input->post("areas");
-        $this->id_carrera = $this->input->post("carreras");
+        $this->id_carrera = $this->input->post("carreras");        
         $this->fecha      = date("Y-m-d H:i:s");
         
         if( $this->db->insert('registros',$this) ) {

@@ -5,13 +5,52 @@ class App extends CI_Controller {
     
     public function index() {
         
-        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+       if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {          
             
-            $this->load->model('Opcion_model','opcion');
-        
-            $data_header["title"] = "Home";
+            $q = $this->input->get("q");
             
-            $data["opciones"] = $this->opcion->getAll();
+            $this->load->library('pagination');
+            $this->load->model('Registro_model','registro');
+
+            $total_row                  = $this->registro->record_count($q);
+            
+            $config                     = array();
+            $config["base_url"]         = base_url() . "/";
+            $config['suffix']           = '?'.http_build_query($_GET,'', "&");            
+            $config["total_rows"]       = $total_row;
+            $config["per_page"]         = 5;
+            $config['num_links']        = 2;
+            $config['use_page_numbers'] = TRUE;
+            $config['next_link']        = '&raquo;';
+            $config['prev_link']        = '&laquo;';
+            $config['first_tag_open']   = '<li class="prev page">';
+            $config['first_tag_close']  = '</li>';
+            $config['last_tag_open']    = '<li class="next page">';
+            $config['last_tag_close']   = '</li>';
+            $config['next_tag_open']    = '<li class="next page">';
+            $config['next_tag_close']   = '</li>';
+            $config['prev_tag_open']    = '<li class="prev page">';
+            $config['prev_tag_close']   = '</li>';
+            $config['cur_tag_open']     = '<li class="active"><a href="">';
+            $config['cur_tag_close']    = '</a></li>';
+            $config['num_tag_open']     = '<li class="page">';
+            $config['num_tag_close']    = '</li>';            
+            $config['first_url']        = $config['base_url'] . $config['suffix'];
+                        
+            $this->pagination->initialize($config);
+            
+            if($this->uri->segment(1)) {
+                $page = ($this->uri->segment(1));
+            }else{
+                $page = 1;
+            }
+
+            $data["registros"] = $this->registro->fetch_data($config["per_page"], $page,trim($q));            
+            $str_links        = $this->pagination->create_links();            
+            $data["links"]    = explode('&nbsp;',$str_links ); 
+            $data["q"]        = $q;
+            
+            $data_header["title"] = "Registros";                                    
             
             $this->load->view('header',$data_header);
             $this->load->view('home',$data);
@@ -19,7 +58,7 @@ class App extends CI_Controller {
 
         } else {
             redirect("login");
-        }
+        }   
         
     }
     

@@ -66,7 +66,10 @@ $route['editar/area']    = 'app/editarArea';
 $route['editar/carrera'] = 'app/editarCarrera';
 
 $route['opciones/(:any)'] = 'app/opciones';
-$route['opciones'] = 'app/opciones';
+$route['opciones']        = 'app/opciones';
+
+$route['(:any)'] = 'app';
+$route['/']        = 'app';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

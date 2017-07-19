@@ -23,6 +23,7 @@ class App extends CI_Controller {
     
     public function guardarFormulario() {
         
+        $this->load->library('user_agent');        
         $this->load->model("Registro_model","registro");
         
         $nombre  = trim($this->input->post("nombre"));
