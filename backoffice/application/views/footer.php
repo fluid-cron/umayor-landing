@@ -9,6 +9,9 @@
 <script src="<?=base_url('assets/js/jquery.min.js') ?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.min.js') ?>"></script>
 <script src="<?=base_url('assets/js/select2/js/select2.js') ?>" type="text/javascript"></script>
+<script src="<?=base_url('assets/js/moment.js') ?>" type="text/javascript"></script>
+<script src="<?=base_url('assets/js/bootstrap-datetimepicker/es.js') ?>" type="text/javascript"></script>
+<script src="<?=base_url('assets/js/bootstrap-datetimepicker/bootstrap-datetimepicker.js') ?>" type="text/javascript"></script>
 <script src="<?=base_url('assets/js/script.min.js') ?>"></script>
 
 </body>

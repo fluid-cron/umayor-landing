@@ -10,20 +10,44 @@
             <div class="visible-sm visible-md visible-lg">
                 <form action="<?php echo base_url();?>" class="navbar-form navbar-left pull-right" style="padding-right: 0px;" >
                   <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' name="desde" placeholder="Fecha desde" value="<?php echo $fecha_desde;?>" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>       
+                    <div class='input-group date' id='datetimepicker7'>
+                        <input type='text' name="hasta" placeholder="Fecha hasta" value="<?php echo $fecha_hasta;?>" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>                        
                     <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
                   </div>
-                  <button type="submit" class="btn btn-default">Buscar</button>
+                  <button type="submit" class="btn btn-default">Filtrar</button>
                   <button type="button" onclick="location.href='<?php echo base_url();?>'" class="btn btn-default">x</button>              
                 </form>  
             </div>            
             
             <div class="hidden-sm hidden-md hidden-lg">           
                 <form action="<?php echo base_url();?>" class="navbar-form navbar-left" >
-                  <div class="form-group">
+                  <div class="form-group">    
+                    <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' name="desde" placeholder="Fecha desde" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>       
+                    <div class='input-group date' id='datetimepicker7'>
+                        <input type='text' name="hasta" placeholder="Fecha hasta" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>                       
                     <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
                   </div>                  
                   <button type="button" onclick="location.href='<?php echo base_url();?>'" class="btn btn-default pull-right">x</button>              
-                  <button type="submit" class="btn btn-default pull-right">Buscar</button>
+                  <button type="submit" class="btn btn-default pull-right">Filtrar</button>
                 </form>
                 <br>  
             </div> 
@@ -54,7 +78,7 @@
                     <td><?php echo $registro['nombre_area'];?></td>
                     <td><?php echo $registro['nombre_carrera'];?></td>
                     <td><?php echo $registro['origen'];?></td>
-                    <td><?php echo $registro['fecha'];?></td>
+                    <td><?php echo date("d-m-Y",strtotime($registro['fecha']));?></td>
                 </tr>
                 <?php endforeach; ?>           
             </table>            

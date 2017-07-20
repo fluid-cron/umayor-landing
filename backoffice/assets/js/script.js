@@ -20,4 +20,24 @@ $(document).ready(function() {
    $("#select-area").select2();
    $("#select-carrera").select2();
    
+    $('#datetimepicker6').datetimepicker({
+        format: 'DD/MM/YYYY',
+        allowInputToggle:true,
+        useCurrent: false  
+    });
+
+    $('#datetimepicker7').datetimepicker({
+        format: 'DD/MM/YYYY',
+        allowInputToggle:true,
+        useCurrent: false        
+    });
+    
+    $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    
+    $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });      
+   
 });

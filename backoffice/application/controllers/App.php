@@ -9,10 +9,28 @@ class App extends CI_Controller {
             
             $q = $this->input->get("q");
             
+            $fecha_desde = $this->input->get("desde");
+            $fecha_hasta = $this->input->get("hasta");
+            
+            if( $fecha_desde!="" && $fecha_hasta!="" ) {
+                
+                $fecha_desde_partes = explode("/", $fecha_desde);
+                $mysql_fecha_desde = $fecha_desde_partes[2]."-".$fecha_desde_partes[1]."-".$fecha_desde_partes[0];
+
+                $fecha_hasta_partes = explode("/", $fecha_hasta);
+                $mysql_fecha_hasta = $fecha_hasta_partes[2]."-".$fecha_hasta_partes[1]."-".$fecha_hasta_partes[0];
+                
+            }else{
+                $fecha_desde = "";
+                $fecha_hasta = "";
+                $mysql_fecha_desde = "";
+                $mysql_fecha_hasta = "";
+            }                          
+            
             $this->load->library('pagination');
             $this->load->model('Registro_model','registro');
 
-            $total_row                  = $this->registro->record_count($q);
+            $total_row                  = $this->registro->record_count($q,$mysql_fecha_desde,$mysql_fecha_hasta);
             
             $config                     = array();
             $config["base_url"]         = base_url() . "/";
@@ -45,10 +63,12 @@ class App extends CI_Controller {
                 $page = 1;
             }
 
-            $data["registros"] = $this->registro->fetch_data($config["per_page"], $page,trim($q));            
-            $str_links        = $this->pagination->create_links();            
-            $data["links"]    = explode('&nbsp;',$str_links ); 
-            $data["q"]        = $q;
+            $data["registros"]   = $this->registro->fetch_data($config["per_page"],$page,trim($q),trim($mysql_fecha_desde),trim($mysql_fecha_hasta));            
+            $str_links           = $this->pagination->create_links();            
+            $data["links"]       = explode('&nbsp;',$str_links ); 
+            $data["q"]           = $q;
+            $data["fecha_desde"] = $fecha_desde;
+            $data["fecha_hasta"] = $fecha_hasta;
             
             $data_header["title"] = "Registros";                                    
             
