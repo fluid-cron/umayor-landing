@@ -43,5 +43,22 @@ class Registro_model extends CI_Model {
         }
         
     }
+    
+    public function check() {
+
+        $unidad  = $this->input->post("unidades");
+        $area    = $this->input->post("areas");
+        $carrera = ($this->input->post("carreras")=="" ? 0 : $this->input->post("carreras"));     
+        
+        $this->db->select("*")
+                 ->from("opciones o")
+                 ->where('o.id_unidad='.$unidad)
+                 ->where('o.id_area='.$area)
+                 ->where('o.id_carrera='.$carrera)
+                 ->where('o.estado=1');
+        
+        return ( $this->db->count_all_results() > 0 ? "existe" : "no existe" );       
+        
+    }
 
 }

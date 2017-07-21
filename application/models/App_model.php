@@ -31,9 +31,11 @@ class App_model extends CI_Model {
 
         $this->db->select('a.id_area as id,a.nombre_area as nombre')
                  ->from('umayor_convenios.opciones as o,umayor_convenios.areas as a')
+                 ->group_start()
                  ->where('o.id_unidad='.$id)
                  ->where('o.id_area=a.id_area')
                  ->where('o.estado=1')
+                 ->group_end()
                  ->group_by('a.nombre_area')
                  ->order_by('a.nombre_area','asc');
 
@@ -42,17 +44,21 @@ class App_model extends CI_Model {
 
     }
     
-    public function getCarreras($id) {
+    public function getCarreras($id_unidad,$id_area) {
 
         $this->db->select('c.id_carrera as id,c.nombre_carrera as nombre')
                  ->from('umayor_convenios.opciones as o,umayor_convenios.carreras_cursos_programas as c')
-                 ->where('o.id_area='.$id)
+                 ->group_start()
+                 ->where('o.id_unidad='.$id_unidad)
+                ->where('o.id_area='.$id_area)
                  ->where('o.id_carrera=c.id_carrera')
                  ->where('o.estado=1')
+                 ->group_end()
                  ->group_by('c.nombre_carrera')
                  ->order_by('c.nombre_carrera','asc');
 
         $query = $this->db->get();
+        //echo $this->db->last_query();
         return $query->result_array();
 
     }

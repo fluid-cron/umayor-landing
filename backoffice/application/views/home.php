@@ -64,7 +64,7 @@
                     <th>Celular</th>
                     <th>Unidad</th>
                     <th>Area</th>
-                    <th>Carrera u otro</th>
+                    <th>Programa</th>
                     <th>Origen</th>
                     <th>Fecha</th>
                 </tr>

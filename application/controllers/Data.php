@@ -32,12 +32,13 @@ class Data extends CI_Controller {
     
     public function getCarreras() {
         
-        $id = $this->input->post("id");
+        $id_unidad = $this->input->post("id_unidad");
+        $id_area   = $this->input->post("id_area");
         
-        if( isset($id) && $id!="" ){
+        if( (isset($id_unidad) && $id_unidad!="") && ( isset($id_area) && $id_area!="" ) ) {
             
             $this->load->model("App_model","app");
-            $carreras = $this->app->getCarreras($id);
+            $carreras = $this->app->getCarreras($id_unidad,$id_area);
 
             $this->output
                  ->set_content_type('application/json')
@@ -47,6 +48,20 @@ class Data extends CI_Controller {
             echo "empty";
         }
         
-    }    
+    }
+
+    public function check() {
+        
+        $this->load->model("Registro_model","registro");       
+        
+        echo $this->registro->check();
+        /*
+        if( $this->registro->check() ) {
+            echo 1;
+        }else{
+            echo 0;
+        }*/
+        
+    }
     
 }
