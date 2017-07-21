@@ -32,8 +32,9 @@ class App extends CI_Controller {
         $unidad  = trim($this->input->post("unidades"));
         $area    = trim($this->input->post("areas"));
         $carrera = trim($this->input->post("carreras"));
+        $consulta = trim($this->input->post("consulta"));
         
-        if( $nombre!="" && $email!="" && $celular!="" && $unidad!="" && $area!="" && $carrera!="" ) {
+        if( $nombre!="" && $email!="" && $celular!="" && $unidad!="" && $area!="" && $consulta!="" ) {
             echo $this->registro->guardarFormulario();
         }else{
             echo "vacio";

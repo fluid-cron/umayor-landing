@@ -53,14 +53,7 @@ class Data extends CI_Controller {
     public function check() {
         
         $this->load->model("Registro_model","registro");       
-        
         echo $this->registro->check();
-        /*
-        if( $this->registro->check() ) {
-            echo 1;
-        }else{
-            echo 0;
-        }*/
         
     }
     

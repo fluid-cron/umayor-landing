@@ -20,9 +20,10 @@
         </select>
         <br>
         <select name="carreras" id="carreras" >
-            <option value="" >Seleccionar carrera u otro</option>
+            <option value="" >Seleccionar programa</option>
         </select>    
         <br>
+        <textarea name="consulta" id="consulta" rows="4" cols="50" ></textarea>
         <input type="submit" value="Enviar" name="enviar" />
     
     </form>

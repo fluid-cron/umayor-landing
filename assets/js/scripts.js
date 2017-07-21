@@ -35,38 +35,6 @@ $("#areas").change(function() {
    
 });
 
-/*
-$.validator.addMethod(
-    "remote_validate",
-    function(value, element) {
-        res = $.ajax({ 
-            url: base_url+'data/check',
-            type: 'POST',
-            data: { 
-                    "unidades" : $("#unidades").val(),
-                    "areas"    : $("#areas").val(),
-                    "carreras" : $("#carreras").val()
-                  },
-            success: function(data) {
-                
-                if( data==1 ) {
-                    $("#carreras").rules( "add", {
-                      require: true
-                    });                      
-                }else{
-                    $("#carreras").rules( "remove","require");                      
-                }
-                
-                //return data;
-            },
-            error: function() {
-                //return 0;
-            }
-        });        
-    }
-);
-*/
-
 jQuery("#formx").validate({
     rules:{
       'nombre'   : { required:true , minlength: 3 },      
@@ -74,7 +42,8 @@ jQuery("#formx").validate({
       'celular'  : { required:true , minlength: 8, digits:true },
       'unidades' : { required:true },
       'areas'    : { required:true },
-      'carreras' : { required:true } //remote_validate:true
+      'carreras' : { required:true },
+      'consulta' : { required:true, minlength:5 }
     },
     errorPlacement: function(error,element) {
       element.addClass('error');
@@ -94,16 +63,21 @@ jQuery("#formx").validate({
                   },
             success: function(data) {
                 
-                /*if( data==="no existe" ) {
-                    //$("#carreras").rules("add",{ required: true });
-                    $("#carreras").rules( "remove","required");
-                    $("#carreras").addClass("error");
-                }else{
-                    $("#carreras").rules( "remove","required");
-                }*/
-                
-                alert(data);
-                
+                $.ajax({
+                    url: base_url+'app/guardarFormulario',
+                    type: 'POST',
+                    data: $("#formx").serialize(),
+                    success: function(data) {
+
+                        if( data!="vacio" ) {
+                            alert("ok");
+                        }else{
+                            alert("error");
+                        }
+
+                    }
+                });                
+                                
             }
         });
 
