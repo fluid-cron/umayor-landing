@@ -63,12 +63,21 @@ class App extends CI_Controller {
                 $page = 1;
             }
 
+            $add = "";
+            foreach($_GET as $k=>$v) {
+                $data[] = "$k=$v";
+            }
+            if( isset($data) && is_array($data)) {
+                $add = "?".implode("&",$data);
+            }
+
             $data["registros"]   = $this->registro->fetch_data($config["per_page"],$page,trim($q),trim($mysql_fecha_desde),trim($mysql_fecha_hasta));            
             $str_links           = $this->pagination->create_links();            
             $data["links"]       = explode('&nbsp;',$str_links ); 
             $data["q"]           = $q;
             $data["fecha_desde"] = $fecha_desde;
             $data["fecha_hasta"] = $fecha_hasta;
+            $data["add"]         = $add;
             
             $data_header["title"] = "Registros";                                    
             

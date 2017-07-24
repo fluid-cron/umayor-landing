@@ -23,7 +23,7 @@
             <option value="" >Seleccionar programa</option>
         </select>    
         <br>
-        <textarea name="consulta" id="consulta" rows="4" cols="50" ></textarea>
+        <textarea name="consulta" id="consulta" rows="4" cols="50" placeholder="Mensaje" ></textarea>
         <input type="submit" value="Enviar" name="enviar" />
     
     </form>

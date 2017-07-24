@@ -23,7 +23,7 @@ $(document).ready(function() {
     $('#datetimepicker6').datetimepicker({
         format: 'DD/MM/YYYY',
         allowInputToggle:true,
-        useCurrent: false  
+        useCurrent: false
     });
 
     $('#datetimepicker7').datetimepicker({
@@ -38,6 +38,10 @@ $(document).ready(function() {
     
     $("#datetimepicker7").on("dp.change", function (e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });      
+    });
+    
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });   
    
 });

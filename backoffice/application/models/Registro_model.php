@@ -19,6 +19,7 @@ class Registro_model extends CI_Model {
     public $id_unidad;
     public $id_area;
     public $id_carrera;
+    public $consulta;
     public $origen;
     public $fecha;
     
@@ -50,13 +51,13 @@ class Registro_model extends CI_Model {
         
         return $this->db->count_all_results();
         
-    }    
+    }
     
     public function fetch_data($limit,$page,$q,$fecha_desde,$fecha_hasta) {
         
         $offset = ($page-1)*$limit;
         
-        $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha')
+        $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
              ->from('umayor_convenios.registros r')        
              ->join('umayor_convenios.unidades u', 'r.id_unidad = u.id_unidad', 'left')
              ->join('umayor_convenios.areas a', 'r.id_area = a.id_area', 'left')
@@ -85,7 +86,38 @@ class Registro_model extends CI_Model {
         //echo $this->db->last_query();
         return $query->result_array(); 
         
-    }          
+    }     
+    
+    public function fetch_data_export($q,$fecha_desde,$fecha_hasta) {
+        
+        $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
+             ->from('umayor_convenios.registros r')        
+             ->join('umayor_convenios.unidades u', 'r.id_unidad = u.id_unidad', 'left')
+             ->join('umayor_convenios.areas a', 'r.id_area = a.id_area', 'left')
+             ->join('umayor_convenios.carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
+        if( $fecha_desde!="" && $fecha_hasta!="" ) {
+        $this->db
+             ->where('left(r.fecha,10) >=',$fecha_desde)                
+             ->where('left(r.fecha,10) <=',$fecha_hasta);
+            //->where('left(r.fecha,10) BETWEEN "'.$fecha_desde. '" AND "'.$fecha_hasta.'"')
+        }
+        if( $q!="" ) {
+        $this->db
+             ->group_start()
+             ->like('u.nombre_unidad', $q)
+             ->or_like('a.nombre_area', $q)
+             ->or_like('c.nombre_carrera', $q)    
+             ->or_like('r.celular', $q)
+             ->or_like('r.nombre', $q)
+             ->or_like('r.email', $q)
+             ->group_end();
+        }
+        $this->db->order_by('r.fecha', 'DESC');
+        $query = $this->db->get();
+        //echo $this->db->last_query();
+        return $query->result_array(); 
+        
+    }        
     
     public function getAll() {
 
