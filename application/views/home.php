@@ -1,31 +1,64 @@
-<div id="container">
-    <form name="formx" id="formx" action="" method="POST" >           
-    
-        <input type="text" name="nombre" value="" placeholder="Nombre" />
-        <br>
-        <input type="text" name="email" value="" placeholder="Email" />
-        <br>
-        <input type="text" name="celular" value="" placeholder="Celular" />
-        <br>
+<header class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6">
+                    <img src="<?php echo base_url("assets/images/logo-umayor.png");?>" class="logo-header" alt="Logo Universidad Mayor"/>
+                </div>
+                <div class="col-6">
+                    
+                </div>                
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row row-right">
+                <div class="col-5 col-sm-3">
+                    
+                </div>
+                <div class="col-7 col-sm-9 p-0 m-0">
+                    <div class="row p-0 m-0">
+                        <div class="col-7 p-0 m-0">
+                            <div class="block-information text-uppercase text-center p-0 m-0">
+                                Informaciones 600 328 1000 
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>                            
+                            </div>
+                        </div>
+                        <div class="col-5 p-0 m-0">
+                            <a href="#" class="block-formulario-online text-uppercase text-center p-0 m-0" >
+                                formulario online
+                            </a>
+                        </div>                
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>
+</header>
 
-        <select name="unidades" id="unidades">
-            <option value="" >Seleccionar unidad</option>
-            <?php foreach($unidades as $unidad): ?>
-            <?php echo '<option value="'.$unidad["id"].'" >'.$unidad["nombre"].'</option>';?>
-            <?php endforeach;?>
-        </select>
-        <br>
-        <select name="areas" id="areas" >
-            <option value="" >Seleccionar area</option>
-        </select>
-        <br>
-        <select name="carreras" id="carreras" >
-            <option value="" >Seleccionar programa</option>
-        </select>    
-        <br>
-        <textarea name="consulta" id="consulta" rows="4" cols="50" placeholder="Mensaje" ></textarea>
-        <input type="submit" value="Enviar" name="enviar" />
-    
-    </form>
-</div>
+<section class="container-fluid" >
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 fondo-left">
+                    
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            formulario
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="container-fluid p-0 m-0">
+    <div class="row p-0 m-0">
+        <div class="col-12 p-0 m-0">
+            <div class="linea" ></div>
+        </div>
+    </div>
+</footer>
 

@@ -1,21 +1,90 @@
-.error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    background-color: #f44336;
-    color: #fff; 
-}
-.error::-moz-placeholder { /* Firefox 19+ */
-    background-color: #f44336;
-    color: #fff; 
-}
-.error:-ms-input-placeholder { /* IE 10+ */
-    background-color: #f44336;
-    color: #fff; 
-}
-.error:-moz-placeholder { /* Firefox 18- */
-    background-color: #f44336;
-    color: #fff; 
-}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+html {
+  font-size: 16px; }
+  html body {
+    font-family: 'Open Sans Condensed', sans-serif; }
+
+header {
+  background-color: #FEDA3F; }
+  header .row-right {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+  header .logo-header {
+    padding-top: 1.5rem;
+    padding-bottom: 1.55rem;
+    margin-left: 5rem; }
+  header .block-information {
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+    padding-top: 0.20rem !important;
+    padding-bottom: 0.20rem !important; }
+    header .block-information .fa-exclamation-circle {
+      color: #FEDA3F;
+      font-size: 1.1rem; }
+  header .block-formulario-online {
+    width: 100%;
+    bottom: 0px;
+    background-color: #a4222b;
+    padding-top: 0.20rem !important;
+    padding-bottom: 0.20rem !important;
+    color: #FEDA3F;
+    display: block; }
+  header .fa-exclamation-circle {
+    margin-left: 5px; }
+
+.fondo-left {
+  height: 100vh;
+  background: url(../images/fondo-left.jpg) no-repeat;
+  background-position: right;
+  background-size: cover; }
+
+footer {
+  background-color: #3f4042; }
+  footer .linea {
+    width: 100%;
+    background: url(../images/linea.jpg) repeat-x;
+    height: .3rem; }
+
+.error::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  background-color: #f44336;
+  color: #fff; }
+
+.error::-moz-placeholder {
+  /* Firefox 19+ */
+  background-color: #f44336;
+  color: #fff; }
+
+.error:-ms-input-placeholder {
+  /* IE 10+ */
+  background-color: #f44336;
+  color: #fff; }
+
+.error:-moz-placeholder {
+  /* Firefox 18- */
+  background-color: #f44336;
+  color: #fff; }
 
 .error {
-    background-color: #f44336;
-    color: #fff; 
-}
+  background-color: #f44336;
+  color: #fff; }
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px; }
+
+  .logo-header {
+    height: 5.5rem; } }
+@media (min-width: 992px) {
+  html {
+    font-size: 14px; } }
+@media (min-width: 1200px) {
+  html {
+    font-size: 17px; } }
+@media (min-width: 1440px) {
+  html {
+    font-size: 20px; } }
+
+/*# sourceMappingURL=style.css.map */

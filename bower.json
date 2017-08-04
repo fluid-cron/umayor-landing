@@ -1,0 +1,14 @@
+{
+  "name": "convenios-umayor",
+  "version": "1.0.0",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "jquery-validation": "1.16.0",
+    "Font-Awesome": "4.7.0"
+  },
+  "devDependencies": {}
+}
