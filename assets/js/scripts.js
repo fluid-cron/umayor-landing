@@ -63,7 +63,7 @@ $("#areas").change(function() {
     
 });
 
-jQuery("#formx").validate({
+jQuery("#formx").validate({   
     rules:{
       'nombre'   : { required:true , minlength: 3 },      
       'email'    : { required:true, email: true , minlength: 5 },
@@ -75,9 +75,14 @@ jQuery("#formx").validate({
     },
     errorPlacement: function(error,element) {
       element.addClass('error');
+      var el = element.next().find('.select2-selection');
+      el.addClass('error');
+      
     },
     unhighlight: function(element) {
       jQuery(element).removeClass("error");
+      var el = jQuery(element).next().find('.select2-selection');
+      el.removeClass('error');      
     },
     submitHandler:function() {
         
@@ -98,9 +103,9 @@ jQuery("#formx").validate({
                     success: function(data) {
 
                         if( data!=="vacio" ) {
-                            alert("ok");
+                            $("form").css("visibility","hidden");
                         }else{
-                            alert("error");
+                            $("form").css("visibility","initial");
                         }
 
                     }
@@ -110,4 +115,31 @@ jQuery("#formx").validate({
         });
 
     }
+});
+
+$("#unidades").select2({
+    placeholder: "Unidades",
+    minimumResultsForSearch: Infinity
+});
+
+$("#areas").select2({
+    placeholder: "Areas",
+    minimumResultsForSearch: Infinity
+});
+
+$("#carreras").select2({
+    placeholder: "Programas",
+    minimumResultsForSearch: Infinity
+});
+
+$("#unidades").change(function(){
+    $("#unidades").valid();
+});
+
+$("#areas").change(function(){
+    $("#areas").valid();
+});
+
+$("#carreras").change(function(){
+    $("#carreras").valid();
 });

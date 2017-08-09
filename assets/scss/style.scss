@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
 $amarillo : #FEDA3F;
-$blanco : #fff;
-$rojo : #a4222b;
+$blanco   : #fff;
+$rojo     : #a4222b;
+$verde    : #12636b;
 
 html {
-    font-size: 16px;
+    font-size: 18px;
     body {
-        font-family: 'Open Sans Condensed', sans-serif;    
-    }    
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
 }
 
 header {
@@ -19,9 +20,12 @@ header {
         width: 100%;
     }    
     .logo-header {
-        padding-top: 1.5rem;
-        padding-bottom: 1.55rem;       
-        margin-left: 5rem;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;               
+        height: initial;
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
     }
     .block-information {
         bottom: 0px;
@@ -31,8 +35,9 @@ header {
         padding-bottom:0.20rem !important;
         .fa-exclamation-circle {
             color: $amarillo;
-            font-size: 1.1rem;
         }
+        display: none;
+        font-size: .8rem;
     }
     .block-formulario-online {
         width: 100%;
@@ -41,55 +46,220 @@ header {
         padding-top: 0.20rem !important;
         padding-bottom:0.20rem !important;
         color : $amarillo;
-        display: block;
+        display: none;
+        text-decoration: none !important;
+        font-size: .8rem;
     }  
     .fa-exclamation-circle {
         margin-left: 5px;
     }
+    .mobile {
+        .block-information {
+            bottom: 0px;
+            width: 100%;
+            background-color: $blanco;    
+            padding-top: 0.10rem !important;
+            padding-bottom:0.10rem !important;
+            .fa-exclamation-circle {
+                color: $amarillo;
+                font-size: 1rem;
+            }
+            display: block;
+            
+        }
+        .block-formulario-online {
+            width: 100%;
+            bottom: 0px;
+            background-color: $rojo; 
+            padding-top: 0.10rem !important;
+            padding-bottom:0.10rem !important;
+            color : $amarillo;
+            display: block;
+                       
+        }  
+    }
+    .block-right-buttons {
+        /*margin-bottom: -1px !important;*/
+    }
 }
 
-.fondo-left {
-    height: 100vh;
-    background: url(../images/fondo-left.jpg) no-repeat;
-    background-position: right;
-    background-size: cover;
+.content {
+    .fondo-left {
+        /*height: 100vh;*/
+        background: url(../images/fondo-left.jpg) no-repeat;
+        background-position: right;
+        background-size: cover;
+        display: none;
+    }    
+    .green {
+        background-color: $verde;
+    }
+    .form-title {
+        font-size: 1.8rem;
+        line-height: 1 !important;
+    }
+    .bajada {
+        color: $amarillo;
+        line-height: 1.2 !important;
+        max-width: 500px;
+        .mobile {
+            font-size: .8rem;
+        }
+    }
 }
 
 footer {
-    background-color: #3f4042;    
+    background-color: #3f4042;   
+    img {
+        height: 5rem;
+    }
     .linea {
         width: 100%;
         background: url(../images/linea.jpg) repeat-x;
         height: .23rem;        
     }
     min-height: 4rem;
+    .text-middle {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: .6rem;
+        top: 1.7rem;
+        position: relative;
+        p {
+            min-height: 2.5rem;
+        }
+    }
+    p {
+        
+    }
+}
+
+.msje-gracias {
+    min-width: 300px;
+    min-height: 300px;
+    display: none;
+}
+
+form {
+    .form-group {
+        margin-bottom: .3rem;     
+        .form-control {
+            padding: 0.4rem 0.75rem;    
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+    }
+    .select2 {
+        width: 100% !important;                
+    }       
+    .btn-enviar {
+        width: 10rem;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background: url(../images/enviar.png) no-repeat;
+        background-size: cover;
+        padding: .8rem !important;
+        color: #a4222b;
+        cursor: pointer;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 1rem;
+        &:active {
+            @extend .btn-enviar;
+        }
+        &:hover {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+    }
+}
+.select2-results__options {
+  line-height: 1 !important;              
+} 
+.form-control {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #5b5b5f !important;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: #5b5b5f !important;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: #5b5b5f !important;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #5b5b5f !important;
+    }    
+}
+
+*:focus {
+   outline: 0;
+ }
+ 
+.error:focus {
+  background-color: #f44336;
+  border-color: #f44336;
+  border-radius: 0.25rem;
+  color: $blanco !important; 
 }
 
 .error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    background-color: #f44336;
-    color: #fff; 
+    background-color: #f44336 !important; 
+    color: $blanco !important; 
 }
 .error::-moz-placeholder { /* Firefox 19+ */
-    background-color: #f44336;
-    color: #fff; 
+    background-color: #f44336 !important; 
+    color: $blanco !important; 
     
 }
 .error:-ms-input-placeholder { /* IE 10+ */
-    background-color: #f44336;
-    color: #fff;
+    background-color: #f44336 !important; 
+    color: $blanco !important; 
 }
 .error:-moz-placeholder { /* Firefox 18- */
-    background-color: #f44336;
-    color: #fff;  
+    background-color: #f44336 !important; 
+    color: $blanco !important; 
 }
 .error {
-    background-color: #f44336;
-    color: #fff;     
+    background-color: #f44336 !important; 
+    color: $blanco !important;    
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-
+    html {
+        font-size: 17px;
+    }
+    .logo-header {
+        height: 4rem !important;
+        width: initial !important;
+        margin-right: initial;
+        margin-left: initial;
+        padding-left: 2rem;
+    }
+    .block-formulario-online {       
+        display: block !important;
+        font-size: initial !important;
+    }
+    .block-information {        
+        display: block !important;
+        font-size: initial !important;
+    }        
+    
+    .mobile {
+        display:none;
+    }    
+    
+    .content {
+        .fondo-left {
+            display: block;
+        }
+    }
+    form {
+        .form-group {  
+            max-width: 350px;
+        }
+        .btn-enviar {
+            margin-left: initial !important;
+            margin-right: initial !important;            
+        }
+    }    
 }
 
 // Medium devices (tablets, 768px and up)
@@ -98,28 +268,42 @@ footer {
         font-size: 16px;
     }
     .logo-header {
-        height: 5.5rem;
-    }    
+        height: 4.9rem !important;
+        width: initial !important;
+        margin-right: initial;
+        margin-left: initial;
+        padding-left: 2rem;
+    }
+    .block-formulario-online {
+        display: block !important;
+    }
+    .block-information {
+        display: block !important;
+    }        
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
     html {
-        font-size: 14px;
+        font-size: 19px;
+    }
+    .content {
+        .form-title {
+            font-size: 2.4rem;
+        }        
     }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
     html {
-        font-size: 17px;
+        /*font-size: 20px;*/
     }
+    .content {
+        .form-title {
+            font-size: 2.9rem;
+        }        
+    }    
 }
 
-// Extra large devices (large desktops, 1440px and up)
-@media (min-width: 1440px) {
-    html {
-        font-size: 20px;
-    }
-}
 
