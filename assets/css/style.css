@@ -14,7 +14,7 @@ header {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
     height: initial;
-    width: 60%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto; }
   header .block-information {
@@ -60,23 +60,24 @@ header {
   header .block-right-buttons {
     /*margin-bottom: -1px !important;*/ }
 
-.content .fondo-left {
-  /*height: 100vh;*/
-  background: url(../images/fondo-left.jpg) no-repeat;
-  background-position: right;
-  background-size: cover;
-  display: none; }
-.content .green {
-  background-color: #12636b; }
-.content .form-title {
-  font-size: 1.8rem;
-  line-height: 1 !important; }
-.content .bajada {
-  color: #FEDA3F;
-  line-height: 1.2 !important;
-  max-width: 500px; }
-  .content .bajada .mobile {
-    font-size: .8rem; }
+.content {
+  /*height: 100%;*/ }
+  .content .fondo-left {
+    background: url(../images/fondo-left.jpg) no-repeat;
+    background-position: right;
+    background-size: cover;
+    display: none; }
+  .content .green {
+    background-color: #12636b; }
+  .content .form-title {
+    font-size: 1.8rem;
+    line-height: 1 !important; }
+  .content .bajada {
+    color: #FEDA3F;
+    line-height: 1.2 !important;
+    max-width: 500px; }
+    .content .bajada .mobile {
+      font-size: .8rem; }
 
 footer {
   background-color: #3f4042;
@@ -96,8 +97,6 @@ footer {
       min-height: 2.5rem; }
 
 .msje-gracias {
-  min-width: 300px;
-  min-height: 300px;
   display: none; }
 
 form .form-group {
@@ -142,34 +141,44 @@ form .btn-enviar, form .btn-enviar:active {
   outline: 0; }
 
 .error:focus {
-  background-color: #f44336;
-  border-color: #f44336;
+  background-color: #fbaba5;
+  border-color: #fbaba5;
   border-radius: 0.25rem;
   color: #fff !important; }
 
 .error::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  background-color: #f44336 !important;
+  background-color: #fbaba5 !important;
   color: #fff !important; }
+  .error::-webkit-input-placeholder .select2-selection__placeholder {
+    color: #fff !important; }
 
 .error::-moz-placeholder {
   /* Firefox 19+ */
-  background-color: #f44336 !important;
+  background-color: #fbaba5 !important;
   color: #fff !important; }
+  .error::-moz-placeholder .select2-selection__placeholder {
+    color: #fff !important; }
 
 .error:-ms-input-placeholder {
   /* IE 10+ */
-  background-color: #f44336 !important;
+  background-color: #fbaba5 !important;
   color: #fff !important; }
+  .error:-ms-input-placeholder .select2-selection__placeholder {
+    color: #fff !important; }
 
 .error:-moz-placeholder {
   /* Firefox 18- */
-  background-color: #f44336 !important;
+  background-color: #fbaba5 !important;
   color: #fff !important; }
+  .error:-moz-placeholder .select2-selection__placeholder {
+    color: #fff !important; }
 
 .error {
-  background-color: #f44336 !important;
+  background-color: #fbaba5 !important;
   color: #fff !important; }
+  .error .select2-selection__placeholder {
+    color: #fff !important; }
 
 @media (min-width: 576px) {
   html {
@@ -178,8 +187,8 @@ form .btn-enviar, form .btn-enviar:active {
   .logo-header {
     height: 4rem !important;
     width: initial !important;
-    margin-right: initial;
-    margin-left: initial;
+    margin-right: initial !important;
+    margin-left: initial !important;
     padding-left: 2rem; }
 
   .block-formulario-online {
@@ -199,7 +208,7 @@ form .btn-enviar, form .btn-enviar:active {
   form .form-group {
     max-width: 350px; }
   form .btn-enviar, form .btn-enviar:active {
-    margin-left: initial !important;
+    margin-left: 0px !important;
     margin-right: initial !important; } }
 @media (min-width: 768px) {
   html {

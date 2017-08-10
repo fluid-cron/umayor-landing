@@ -26,15 +26,14 @@ class Registro_model extends CI_Model {
     public function record_count($q,$fecha_desde,$fecha_hasta) {
 
         $this->db->select('*')
-             ->from('umayor_convenios.registros r')
-             ->join('umayor_convenios.unidades u', 'r.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'r.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
+             ->from('registros r')
+             ->join('unidades u', 'r.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'r.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
         if( $fecha_desde!="" && $fecha_hasta!="" ) {
         $this->db
              ->where('left(r.fecha,10) >=',$fecha_desde)                
-             ->where('left(r.fecha,10) <=',$fecha_hasta);
-             //->where('left(r.fecha,10) BETWEEN "'.$fecha_desde. '" AND "'.$fecha_hasta.'"')
+             ->where('left(r.fecha,10) <=',$fecha_hasta);            
         }
         if( $q!="" ) {
         $this->db
@@ -58,15 +57,14 @@ class Registro_model extends CI_Model {
         $offset = ($page-1)*$limit;
         
         $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
-             ->from('umayor_convenios.registros r')        
-             ->join('umayor_convenios.unidades u', 'r.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'r.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
+             ->from('registros r')        
+             ->join('unidades u', 'r.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'r.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
         if( $fecha_desde!="" && $fecha_hasta!="" ) {
         $this->db
              ->where('left(r.fecha,10) >=',$fecha_desde)                
              ->where('left(r.fecha,10) <=',$fecha_hasta);
-            //->where('left(r.fecha,10) BETWEEN "'.$fecha_desde. '" AND "'.$fecha_hasta.'"')
         }
         if( $q!="" ) {
         $this->db
@@ -91,15 +89,14 @@ class Registro_model extends CI_Model {
     public function fetch_data_export($q,$fecha_desde,$fecha_hasta) {
         
         $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
-             ->from('umayor_convenios.registros r')        
-             ->join('umayor_convenios.unidades u', 'r.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'r.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
+             ->from('registros r')        
+             ->join('unidades u', 'r.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'r.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
         if( $fecha_desde!="" && $fecha_hasta!="" ) {
         $this->db
              ->where('left(r.fecha,10) >=',$fecha_desde)                
              ->where('left(r.fecha,10) <=',$fecha_hasta);
-            //->where('left(r.fecha,10) BETWEEN "'.$fecha_desde. '" AND "'.$fecha_hasta.'"')
         }
         if( $q!="" ) {
         $this->db
@@ -122,14 +119,10 @@ class Registro_model extends CI_Model {
     public function getAll() {
 
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
-             //->from('umayor_convenios.opciones o, umayor_convenios.unidades u, umayor_convenios.areas a, umayor_convenios.carreras_cursos_programas c')
-             //->where('o.id_unidad = u.id_unidad')
-             //->where('o.id_area = a.id_area')
-             //->where('o.id_carrera=c.id_carrera')
-             ->from('umayor_convenios.opciones o')
-             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->from('opciones o')
+             ->join('unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'o.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
              ->order_by('id', 'DESC');
         
         $query = $this->db->get();
@@ -171,7 +164,7 @@ class Registro_model extends CI_Model {
         }
         
         $this->db->select('o.id')
-             ->from('umayor_convenios.opciones o')
+             ->from('opciones o')
              ->where('o.id_unidad = '.$unidad)
              ->where('o.id_area = '.$area)
              ->where('o.id_carrera = '.$carrera);

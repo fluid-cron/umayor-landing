@@ -1,7 +1,7 @@
 <section class="container-fluid content" >
     <div class="row">
         <div class="col-12">
-            <div class="row">
+            <div class="row content2">
                 <div class="col-12 col-sm-5 col-md-6 fondo-left p-0 m-0"></div>
                 <div class="col-12 col-sm-7 col-md-6 green p-0 m-0">
                     <div class="row p-0 m-0">
@@ -31,7 +31,7 @@
                     <div class="row p-0 m-0">
                         <div class="col-12 p-0 m-0 text-white p-3">
                             
-                            <p class="msje-gracias">Solcitud recibida con éxito.</p>
+                            <p class="msje-gracias my-5">Solcitud recibida con éxito.</p>
                             
                             <form name="formx" id="formx" action="" method="POST" > 
                                 <div class="form-group">

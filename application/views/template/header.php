@@ -6,6 +6,17 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    <meta name="theme-color" content="#FEDA3F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!--black-->    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('favicon.ico') ?>" />
+
+    <link rel="apple-touch-icon" href="<?php echo base_url('assets/images/iconos/apple-icon-60x60.png') ?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/images/iconos/apple-icon-76x76.png') ?>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url('assets/images/iconos/apple-icon-120x120.png') ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('assets/images/iconos/apple-icon-152x152.png') ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('assets/images/iconos/apple-icon-180x180.png') ?>"> 
+    
     <link href="<?php echo base_url('assets/css/bootstrap.css') ?>" rel="stylesheet" type="text/css"/>    
     <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/js/select2/css/select2.css') ?>" rel="stylesheet" type="text/css"/>
@@ -14,12 +25,15 @@
 </head>
 <body>
 <input type="hidden" id="base_url" value="<?php echo base_url(); ?>">
+<input type="hidden" id="origen" value="<?php echo $origen; ?>">
 <header class="container-fluid p-0 m-0">
     <div class="row p-0 m-0">
         <div class="col-12 col-sm-5 col-md-6">
             <div class="row">
                 <div class="col-12 col-sm-6 py-0 px-0 m-0">
-                    <img class="logo-header d-block" src="<?php echo base_url("assets/images/logo-umayor.png");?>" alt="Logo Universidad Mayor"/>
+                    <a href="https://www.umayor.cl" target="_blank" >
+                        <img class="logo-header d-block" src="<?php echo base_url("assets/images/logo-umayor.png");?>" alt="Logo Universidad Mayor"/>
+                    </a>
                 </div>
                 <div class="col-sm-6 hidden-sm-down">
                     

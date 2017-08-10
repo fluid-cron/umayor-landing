@@ -30,7 +30,7 @@ class App_model extends CI_Model {
     public function getAreas($id) {
 
         $this->db->select('a.id_area as id,a.nombre_area as nombre')
-                 ->from('umayor_convenios.opciones as o,umayor_convenios.areas as a')
+                 ->from('opciones as o,areas as a')
                  ->group_start()
                  ->where('o.id_unidad='.$id)
                  ->where('o.id_area=a.id_area')
@@ -47,7 +47,7 @@ class App_model extends CI_Model {
     public function getCarreras($id_unidad,$id_area) {
 
         $this->db->select('c.id_carrera as id,c.nombre_carrera as nombre')
-                 ->from('umayor_convenios.opciones as o,umayor_convenios.carreras_cursos_programas as c')
+                 ->from('opciones as o,carreras_cursos_programas as c')
                  ->group_start()
                  ->where('o.id_unidad='.$id_unidad)
                 ->where('o.id_area='.$id_area)

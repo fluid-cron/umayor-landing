@@ -2,15 +2,25 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class App extends CI_Controller {
+    
+    
 
     public function index() {
+        
+        $this->load->library('user_agent');   
+          
+        $origen = "desktop";
+        if ($this->agent->is_mobile()) {
+            $origen = "mobile";
+        }        
 
         $this->load->model("App_model","app");
         
         $unidades = $this->app->getUnidades();
         
         $data_header = array(
-            'title'=>'Landing Convenios'
+            'title'=>'Landing Convenios',
+            'origen'=> $origen
         );
 
         $data['unidades'] = $unidades;

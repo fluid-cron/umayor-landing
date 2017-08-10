@@ -1,4 +1,5 @@
 var base_url = $("#base_url").val();
+var origen   = $("#origen").val();
 
 $("#unidades").change(function() {
    
@@ -103,9 +104,16 @@ jQuery("#formx").validate({
                     success: function(data) {
 
                         if( data!=="vacio" ) {
-                            $("form").css("visibility","hidden");
+                            $("form").hide();
+                            var h = $(window).height();
+                            var header = $("header").height();
+                            var footer = $("footer").height();
+                            var new_h = h-(header+footer);
+                            $(".content,.content2").height( new_h+"px" );                            
+                            $(".msje-gracias").fadeIn();
                         }else{
-                            $("form").css("visibility","initial");
+                            $("form").show();
+                            $(".msje-gracias").hide();
                         }
 
                     }
@@ -143,3 +151,21 @@ $("#areas").change(function(){
 $("#carreras").change(function(){
     $("#carreras").valid();
 });
+
+$(document).ready(function() {
+  var h = $(this).height();
+  var header = $("header").height();
+  var footer = $("footer").height();
+  var new_h = h-(header+footer);
+  $(".content,.content2").height( new_h+"px" );
+});
+
+if( origen=="desktop" ) {
+    $(window).resize(function() {
+      var h = $(this).height();
+      var header = $("header").height();
+      var footer = $("footer").height();
+      var new_h = h-(header+footer);
+      $(".content,.content2").height( new_h+"px" );
+    });
+}

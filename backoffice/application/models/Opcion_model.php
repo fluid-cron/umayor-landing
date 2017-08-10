@@ -22,14 +22,10 @@ class Opcion_model extends CI_Model {
     public function getAll() {
 
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
-             //->from('umayor_convenios.opciones o, umayor_convenios.unidades u, umayor_convenios.areas a, umayor_convenios.carreras_cursos_programas c')
-             //->where('o.id_unidad = u.id_unidad')
-             //->where('o.id_area = a.id_area')
-             //->where('o.id_carrera=c.id_carrera')
-             ->from('umayor_convenios.opciones o')
-             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->from('opciones o')
+             ->join('unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'o.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
              ->order_by('id', 'DESC');
         
         $query = $this->db->get();
@@ -41,10 +37,10 @@ class Opcion_model extends CI_Model {
         
         $offset = ($page-1)*$limit;        
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
-             ->from('umayor_convenios.opciones o')
-             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->from('opciones o')
+             ->join('unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'o.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
              ->like('u.nombre_unidad', $q)
              ->or_like('a.nombre_area', $q)
              ->or_like('c.nombre_carrera', $q)    
@@ -58,10 +54,10 @@ class Opcion_model extends CI_Model {
     public function record_count($q) {
 
         $this->db->select('o.id,u.nombre_unidad as unidad , a.nombre_area as area, c.nombre_carrera as carrera, o.estado')
-             ->from('umayor_convenios.opciones o')
-             ->join('umayor_convenios.unidades u', 'o.id_unidad = u.id_unidad', 'left')
-             ->join('umayor_convenios.areas a', 'o.id_area = a.id_area', 'left')
-             ->join('umayor_convenios.carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
+             ->from('opciones o')
+             ->join('unidades u', 'o.id_unidad = u.id_unidad', 'left')
+             ->join('areas a', 'o.id_area = a.id_area', 'left')
+             ->join('carreras_cursos_programas c', 'o.id_carrera=c.id_carrera', 'left')
              ->like('u.nombre_unidad', $q)
              ->or_like('a.nombre_area', $q)
              ->or_like('c.nombre_carrera', $q)                  
@@ -105,7 +101,7 @@ class Opcion_model extends CI_Model {
         }
         
         $this->db->select('o.id')
-             ->from('umayor_convenios.opciones o')
+             ->from('opciones o')
              ->where('o.id_unidad = '.$unidad)
              ->where('o.id_area = '.$area)
              ->where('o.id_carrera = '.$carrera);

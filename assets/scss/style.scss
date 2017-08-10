@@ -4,6 +4,7 @@ $amarillo : #FEDA3F;
 $blanco   : #fff;
 $rojo     : #a4222b;
 $verde    : #12636b;
+$error    : #fbaba5;
 
 html {
     font-size: 18px;
@@ -23,7 +24,7 @@ header {
         padding-top: 1.2rem;
         padding-bottom: 1.2rem;               
         height: initial;
-        width: 60%;
+        width: 80%;
         margin-right: auto;
         margin-left: auto;
     }
@@ -84,8 +85,8 @@ header {
 }
 
 .content {
+    /*height: 100%;*/
     .fondo-left {
-        /*height: 100vh;*/
         background: url(../images/fondo-left.jpg) no-repeat;
         background-position: right;
         background-size: cover;
@@ -134,8 +135,6 @@ footer {
 }
 
 .msje-gracias {
-    min-width: 300px;
-    min-height: 300px;
     display: none;
 }
 
@@ -193,32 +192,46 @@ form {
  }
  
 .error:focus {
-  background-color: #f44336;
-  border-color: #f44336;
+  background-color: $error;
+  border-color: $error;
   border-radius: 0.25rem;
   color: $blanco !important; 
 }
 
 .error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    background-color: #f44336 !important; 
+    background-color: $error !important; 
     color: $blanco !important; 
+    .select2-selection__placeholder {
+        color: $blanco !important;
+    }    
 }
 .error::-moz-placeholder { /* Firefox 19+ */
-    background-color: #f44336 !important; 
+    background-color: $error !important; 
     color: $blanco !important; 
-    
+    .select2-selection__placeholder {
+        color: $blanco !important;
+    }        
 }
 .error:-ms-input-placeholder { /* IE 10+ */
-    background-color: #f44336 !important; 
+    background-color: $error !important; 
     color: $blanco !important; 
+    .select2-selection__placeholder {
+        color: $blanco !important;
+    }        
 }
 .error:-moz-placeholder { /* Firefox 18- */
-    background-color: #f44336 !important; 
+    background-color: $error !important; 
     color: $blanco !important; 
+    .select2-selection__placeholder {
+        color: $blanco !important;
+    }        
 }
 .error {
-    background-color: #f44336 !important; 
+    background-color: $error !important; 
     color: $blanco !important;    
+    .select2-selection__placeholder {
+        color: $blanco !important;
+    }        
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -229,8 +242,8 @@ form {
     .logo-header {
         height: 4rem !important;
         width: initial !important;
-        margin-right: initial;
-        margin-left: initial;
+        margin-right: initial !important;
+        margin-left: initial !important;
         padding-left: 2rem;
     }
     .block-formulario-online {       
@@ -256,7 +269,7 @@ form {
             max-width: 350px;
         }
         .btn-enviar {
-            margin-left: initial !important;
+            margin-left: 0px !important;
             margin-right: initial !important;            
         }
     }    
