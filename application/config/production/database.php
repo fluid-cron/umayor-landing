@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'chelios8686',
-	'database' => 'cron_umayor_convenios',
-	'dbdriver' => 'mysqli',
+	'hostname' => 'mysql.cronstudio.com',
+	'username' => 'cronstudio_user',
+	'password' => 'ytrewq',
+	'database' => 'umayor_convenios',
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

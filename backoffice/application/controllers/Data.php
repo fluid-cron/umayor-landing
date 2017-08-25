@@ -32,6 +32,27 @@ class Data extends CI_Controller {
         
     }
     
+    public function editarEstadoIngreso() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        
+            $this->load->model('Ingreso_model','ingreso');
+
+            $id = $this->input->post("id");
+
+            if( $id!="" ) {
+               $data = $this->ingreso->editarEstadoIngreso($id);
+               echo $data;
+            }else{
+                echo "err";
+            }
+
+        }else{
+            echo "err";
+        }
+        
+    }    
+    
     public function exportar() {
         
         $this->load->library('/PHPExcel-1.8/Classes/PHPExcel.php');
@@ -67,14 +88,17 @@ class Data extends CI_Controller {
 
 	$objPHPExcel->getActiveSheet()->setCellValue('A1', 'ID');
 	$objPHPExcel->getActiveSheet()->setCellValue('B1', 'Nombre');
-        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Email');
-        $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Celular');
-        $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Unidad');
-        $objPHPExcel->getActiveSheet()->setCellValue('F1', 'Area');
-        $objPHPExcel->getActiveSheet()->setCellValue('G1', 'Programa');        
-        $objPHPExcel->getActiveSheet()->setCellValue('H1', 'Consulta');
-        $objPHPExcel->getActiveSheet()->setCellValue('I1', 'Origen');
-        $objPHPExcel->getActiveSheet()->setCellValue('J1', 'Fecha');
+        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Apellido');
+        $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Rut');
+        $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Email');
+        $objPHPExcel->getActiveSheet()->setCellValue('F1', 'Celular');
+        $objPHPExcel->getActiveSheet()->setCellValue('G1', 'Unidad');
+        $objPHPExcel->getActiveSheet()->setCellValue('H1', 'Area');
+        $objPHPExcel->getActiveSheet()->setCellValue('I1', 'Programa');
+        $objPHPExcel->getActiveSheet()->setCellValue('J1', 'Tipo ingreso');        
+        $objPHPExcel->getActiveSheet()->setCellValue('K1', 'Consulta');
+        $objPHPExcel->getActiveSheet()->setCellValue('L1', 'Origen');
+        $objPHPExcel->getActiveSheet()->setCellValue('M1', 'Fecha');
         
 	$row = 2;
 	foreach($registros as $key) {            
@@ -83,22 +107,28 @@ class Data extends CI_Controller {
 		
 		$id       = $key["id"];
 		$nombre   = $key["nombre"];
+                $apellido = $key["apellido"];
+                $rut      = $key["rut"];
 		$email    = $key["email"];
 		$celular  = $key["celular"];
 		$unidad   = $key["nombre_unidad"];
 		$area     = $key["nombre_area"];
 		$programa = $key["nombre_carrera"];
                 $origen   = $key["origen"];
+                $tipo_ingreso = $key["tipo"];
                 $consulta = $key["consulta"];
                 $fecha    = $key["fecha"];
 
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $id);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $nombre);
+                $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $rut);
+                $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $apellido);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $email);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $celular);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $unidad);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $area);
-                $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $programa);                
+                $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $programa);  
+                $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $tipo_ingreso);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $consulta);
                 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $origen);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col+=1, $row, $fecha);

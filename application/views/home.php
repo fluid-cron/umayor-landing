@@ -1,47 +1,53 @@
 <section class="container-fluid content" >
     <div class="row">
-        <div class="col-12">
+        <div class="col-xs-12">
             <div class="row content2">
-                <div class="col-12 col-sm-5 col-md-6 fondo-left p-0 m-0"></div>
-                <div class="col-12 col-sm-7 col-md-6 green p-0 m-0">
-                    <div class="row p-0 m-0">
-                        <div class="col-12 p-0 m-0">
-                            <div class="row p-0 m-0">
-                                <div class="col-12 form-title pt-2">
-                                    <p class="text-white p-0 m-0">Convenios</p>
-                                    <p class="text-white p-0 m-0">Universidad Mayor</p>    
+                <div class="col-xs-12 col-sm-5 col-md-6 fondo-left"></div>
+                <div class="col-xs-12 col-sm-7 col-md-6 green">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-12 form-title">
+                                    <p class="text-white text-uppercase">Convenios</p>
+                                    <p class="text-white text-uppercase">Universidad Mayor</p>    
                                 </div>                                
                             </div>
                         </div>
                     </div>
-                    <div class="row p-0 m-0 pl-3">
-                        <div class="col-12 bajada p-0 m-0">
-                            <p class="pt-2 m-0 text-uppercase hidden-sm-down desktop">
+                    <div class="row">
+                        <div class="col-xs-12 bajada">
+                            <p class="hidden-xs desktop">
                                 Completa el formulario y solicita información sobre los 
                                 diferentes convenios y beneficios que puedes acceder para 
                                 estudiar en Universidad Mayor.                                
                             </p>                            
-                            <p class="pt-2 m-0 text-uppercase hidden-sm-up mobile">
+                            <p class="hidden-md hidden-lg mobile">
                                 Completa el formulario y solicita información sobre los 
                                 diferentes convenios y beneficios que puedes acceder para 
                                 estudiar en Universidad Mayor.                                
                             </p>
                         </div>
                     </div>
-                    <div class="row p-0 m-0">
-                        <div class="col-12 p-0 m-0 text-white p-3">
+                    <div class="row">
+                        <div class="col-xs-12 text-white">
                             
-                            <p class="msje-gracias my-5">Solcitud recibida con éxito.</p>
+                            <p class="msje-gracias">Solcitud recibida con éxito.</p>
                             
                             <form name="formx" id="formx" action="" method="POST" > 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre Completo">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" maxlength="30">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="email" placeholder="Email">
+                                    <input type="text" class="form-control" name="apellido" placeholder="Apellido" maxlength="30">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="celular" placeholder="Celular">
+                                    <input type="text" class="form-control" name="rut" id="rut" placeholder="Rut" maxlength="12">
+                                </div>                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" maxlength="50">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="celular" placeholder="Celular" maxlength="9" >
                                 </div>                                
                                 <div class="form-group">
                                     <select class="form-control" name="unidades" id="unidades" >
@@ -60,13 +66,22 @@
                                     <select class="form-control" name="carreras" id="carreras" >
                                       <option value="">Programa</option>                                    
                                   </select>
-                                </div>                                   
+                                </div>   
                                 <div class="form-group">
-                                    <textarea class="form-control" name="consulta" id="consulta" placeholder="Consulta" rows="3"></textarea>
+                                    <select class="form-control" name="tipo_ingreso" id="tipo_ingreso" >
+                                      <option value="">Tipo ingreso</option>    
+                                      <?php foreach($tipos_ingresos as $tipo_ingreso): ?>
+                                      <?php echo '<option value="'.$tipo_ingreso["id"].'" >'.$tipo_ingreso["nombre"].'</option>';?>
+                                      <?php endforeach;?>                                      
+                                  </select>
+                                </div>                               
+                                <div class="form-group">
+                                    <textarea class="form-control" name="consulta" id="consulta" placeholder="Consulta" rows="3" maxlength="170"></textarea>
                                 </div>                              
-                                <button type="submit" value="ENVIAR" class="btn btn-enviar mt-3 p-0 border-0" >
+                                <button type="submit" value="ENVIAR" class="btn btn-enviar" >
                                     ENVIAR
                                 </button>
+                                <a href="#" target="_blank" class="ver-politicas">Ver políticas de privacidad</a>
                             </form>                            
                             
                         </div>

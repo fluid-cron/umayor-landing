@@ -56,10 +56,11 @@ class Registro_model extends CI_Model {
         
         $offset = ($page-1)*$limit;
         
-        $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
-             ->from('registros r')        
+        $this->db->select('r.id,r.nombre,r.apellido,r.rut,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,i.nombre as tipo,r.origen,r.fecha,r.consulta')
+             ->from('registros r')
              ->join('unidades u', 'r.id_unidad = u.id_unidad', 'left')
              ->join('areas a', 'r.id_area = a.id_area', 'left')
+             ->join('ingresos i', 'r.tipo_ingreso = i.id', 'left')
              ->join('carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
         if( $fecha_desde!="" && $fecha_hasta!="" ) {
         $this->db
@@ -88,10 +89,11 @@ class Registro_model extends CI_Model {
     
     public function fetch_data_export($q,$fecha_desde,$fecha_hasta) {
         
-        $this->db->select('r.id,r.nombre,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,r.origen,r.fecha,r.consulta')
-             ->from('registros r')        
+        $this->db->select('r.id,r.nombre,r.apellido,r.rut,r.email,r.celular,u.nombre_unidad,a.nombre_area,c.nombre_carrera,i.nombre as tipo,r.origen,r.fecha,r.consulta')
+             ->from('registros r')               
              ->join('unidades u', 'r.id_unidad = u.id_unidad', 'left')
              ->join('areas a', 'r.id_area = a.id_area', 'left')
+             ->join('ingresos i', 'r.tipo_ingreso = i.id', 'left')
              ->join('carreras_cursos_programas c', 'r.id_carrera=c.id_carrera', 'left');
         if( $fecha_desde!="" && $fecha_hasta!="" ) {
         $this->db

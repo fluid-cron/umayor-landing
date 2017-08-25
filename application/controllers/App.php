@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class App extends CI_Controller {
     
-    
-
     public function index() {
         
         $this->load->library('user_agent');   
@@ -17,6 +15,7 @@ class App extends CI_Controller {
         $this->load->model("App_model","app");
         
         $unidades = $this->app->getUnidades();
+        $tipos_ingresos = $this->app->getTiposIngreso();        
         
         $data_header = array(
             'title'=>'Landing Convenios',
@@ -24,6 +23,7 @@ class App extends CI_Controller {
         );
 
         $data['unidades'] = $unidades;
+        $data['tipos_ingresos'] = $tipos_ingresos;
 
         $this->parser->parse('template/header',$data_header);
         $this->load->view('home',$data);
@@ -36,12 +36,12 @@ class App extends CI_Controller {
         $this->load->library('user_agent');        
         $this->load->model("Registro_model","registro");
         
-        $nombre  = trim($this->input->post("nombre"));
-        $email   = trim($this->input->post("email"));
-        $celular = trim($this->input->post("celular"));
-        $unidad  = trim($this->input->post("unidades"));
-        $area    = trim($this->input->post("areas"));
-        $carrera = trim($this->input->post("carreras"));
+        $nombre   = trim($this->input->post("nombre"));
+        $email    = trim($this->input->post("email"));
+        $celular  = trim($this->input->post("celular"));
+        $unidad   = trim($this->input->post("unidades"));
+        $area     = trim($this->input->post("areas"));
+        $carrera  = trim($this->input->post("carreras"));
         $consulta = trim($this->input->post("consulta"));
         
         if( $nombre!="" && $email!="" && $celular!="" && $unidad!="" && $area!="" && $consulta!="" ) {

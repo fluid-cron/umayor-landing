@@ -1,5 +1,18 @@
 var base_url = $("#base_url").val();
 var origen   = $("#origen").val();
+var estado_submit = 0;
+
+$.validator.addMethod("rut", function(value, element) {
+  return this.optional(element) || $.Rut.validar(value);
+}, "");
+
+jQuery.validator.addMethod("lettersonly", function(value, element){
+    return this.optional(element) || /^[a-zñáéíóú A-Z]+$/i.test(value);
+});
+
+$("#rut").Rut({
+   format_on: 'keyup'   
+})
 
 $("#unidades").change(function() {
    
@@ -7,7 +20,7 @@ $("#unidades").change(function() {
     
     $.ajax({
       method: "POST",
-      url: base_url+"data/getAreas",
+      url: base_url+"data/getAreas.php",
       data: { id: id }
     }).done(function( msg ) {
        $("#areas").html('<option value="">Seleccionar area</option>');
@@ -29,7 +42,7 @@ $("#areas").change(function() {
     
     $.ajax({
       method: "POST",
-      url: base_url+"data/getCarreras",
+      url: base_url+"data/getCarreras.php",
       data: { id_unidad:id_unidad,id_area: id_area }
     }).done(function( msg ) {
         
@@ -40,7 +53,7 @@ $("#areas").change(function() {
        });  
 
         $.ajax({
-            url: base_url+'data/check',
+            url: base_url+'data/check.php',
             type: 'POST',
             data: {
                     "unidades" : $("#unidades").val(),
@@ -64,15 +77,18 @@ $("#areas").change(function() {
     
 });
 
-jQuery("#formx").validate({   
+jQuery("#formx").validate({
     rules:{
-      'nombre'   : { required:true , minlength: 3 },      
-      'email'    : { required:true, email: true , minlength: 5 },
-      'celular'  : { required:true , minlength: 8, digits:true },
-      'unidades' : { required:true },
-      'areas'    : { required:true },
-      'carreras' : { required:true },
-      'consulta' : { required:true, minlength:5, maxlength:200 }
+      'nombre'       : { required:true , minlength: 3 ,lettersonly:true },      
+      'apellido'     : { required:true , minlength: 3 ,lettersonly:true },      
+      'rut'          : { required:true , rut:true , maxlength:12 },      
+      'email'        : { required:true, email: true , minlength: 5 },
+      'celular'      : { required:true , minlength: 9, digits:true },
+      'unidades'     : { required:true },
+      'areas'        : { required:true },
+      'carreras'     : { required:true },
+      'tipo_ingreso' : { required:true },
+      'consulta'     : { required:true, minlength:5, maxlength:170 }
     },
     errorPlacement: function(error,element) {
       element.addClass('error');
@@ -87,40 +103,48 @@ jQuery("#formx").validate({
     },
     submitHandler:function() {
         
-        $.ajax({
-            url: base_url+'data/check',
-            type: 'POST',
-            data: {
-                    "unidades" : $("#unidades").val(),
-                    "areas"    : $("#areas").val(),
-                    "carreras" : $("#carreras").val()
-            },
-            success: function(data) {
-                
-                $.ajax({
-                    url: base_url+'app/guardarFormulario',
-                    type: 'POST',
-                    data: $("#formx").serialize(),
-                    success: function(data) {
+        if( estado_submit==0 ) {
+            estado_submit = 1;
+        
+            $.ajax({
+                url: base_url+'data/check.php',
+                type: 'POST',
+                data: {
+                        "unidades" : $("#unidades").val(),
+                        "areas"    : $("#areas").val(),
+                        "carreras" : $("#carreras").val()
+                },
+                success: function(data) {
 
-                        if( data!=="vacio" ) {
-                            $("form").hide();
-                            var h = $(window).height();
-                            var header = $("header").height();
-                            var footer = $("footer").height();
-                            var new_h = h-(header+footer);
-                            $(".content,.content2").height( new_h+"px" );                            
-                            $(".msje-gracias").fadeIn();
-                        }else{
-                            $("form").show();
-                            $(".msje-gracias").hide();
+                    $.ajax({
+                        url: base_url+'app/guardarFormulario.php',
+                        type: 'POST',
+                        data: $("#formx").serialize(),
+                        success: function(data) {
+
+                            if( data!=="vacio" ) {
+                                $("form").hide();
+                                var h = $(window).height();
+                                var header = $("header").height();
+                                var footer = $("footer").height();
+                                var new_h = h-(header+footer);
+                                $(".content,.content2").height( new_h+"px" );                            
+                                $(".msje-gracias").fadeIn();
+                            }else{
+                                $("form").show();
+                                $(".msje-gracias").hide();
+                            }
+                            estado_submit = 0;
+
                         }
+                    });                
 
-                    }
-                });                
-                                
-            }
-        });
+                }
+
+
+            });
+        
+        }
 
     }
 });
@@ -140,6 +164,11 @@ $("#carreras").select2({
     minimumResultsForSearch: Infinity
 });
 
+$("#tipo_ingreso").select2({
+    placeholder: "Tipo ingreso",
+    minimumResultsForSearch: Infinity
+});
+
 $("#unidades").change(function(){
     $("#unidades").valid();
 });
@@ -152,20 +181,29 @@ $("#carreras").change(function(){
     $("#carreras").valid();
 });
 
+$("#tipo_ingreso").change(function(){
+    $("#tipo_ingreso").valid();
+});
+
 $(document).ready(function() {
   var h = $(this).height();
   var header = $("header").height();
   var footer = $("footer").height();
   var new_h = h-(header+footer);
   $(".content,.content2").height( new_h+"px" );
+  $(".derecho").height(header+"px");  
+  
 });
 
-if( origen=="desktop" ) {
-    $(window).resize(function() {
-      var h = $(this).height();
-      var header = $("header").height();
-      var footer = $("footer").height();
-      var new_h = h-(header+footer);
-      $(".content,.content2").height( new_h+"px" );
-    });
-}
+//if( origen=="desktop" ) {
+$(document).resize(function() {
+    
+  var h = $(this).height();
+  var header = $("header").height();
+  var footer = $("footer").height();
+  var new_h = h-(header+footer);
+  $(".content,.content2").height( new_h+"px" );
+  $(".derecho").height(header+"px");
+  
+});
+//}

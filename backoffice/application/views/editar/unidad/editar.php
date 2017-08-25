@@ -41,7 +41,7 @@
                     <input type="text" name="new_unidad" id="new_unidad" class="form-control input_new" placeholder="Ingrese aquí el nuevo nombre de la unidad seleccionada">
                 </div>
               </div>                      
-              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Submit">
+              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Guardar">
             </form>            
                        
         </div>

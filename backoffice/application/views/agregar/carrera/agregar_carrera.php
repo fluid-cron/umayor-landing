@@ -32,7 +32,7 @@
                     </div>
                 </div>
              
-              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Submit">
+              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Guardar">
             </form>            
                        
         </div>

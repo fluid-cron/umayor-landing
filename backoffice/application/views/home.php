@@ -63,29 +63,39 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Rut</th>
                     <th>Email</th>
                     <th>Celular</th>
                     <th>Unidad</th>
                     <th>Area</th>
                     <th>Programa</th>
+                    <th>Tipo</th>
                     <th>Mensaje</th>
                     <th>Origen</th>
                     <th>Fecha</th>
                 </tr>
-                <?php foreach ($registros as $registro): ?>
-                <tr>
-                    <td><?php echo $registro['id'];?></td>
-                    <td><?php echo $registro['nombre'];?></td>
-                    <td><?php echo $registro['email'];?></td>
-                    <td><?php echo $registro['celular'];?></td>
-                    <td><?php echo $registro['nombre_unidad'];?></td>
-                    <td><?php echo $registro['nombre_area'];?></td>
-                    <td><?php echo $registro['nombre_carrera'];?></td>
-                    <td><?php echo $registro['consulta'];?></td>
-                    <td><?php echo $registro['origen'];?></td>
-                    <td><?php echo date("d-m-Y",strtotime($registro['fecha']));?></td>
-                </tr>
-                <?php endforeach; ?>           
+                <?php if(count($registros)>0):?>
+                    <?php foreach ($registros as $registro): ?>
+                    <tr>
+                        <td><?php echo $registro['id'];?></td>
+                        <td><?php echo $registro['nombre'];?></td>
+                        <td><?php echo $registro['apellido'];?></td>
+                        <td><?php echo $registro['rut'];?></td>
+                        <td><?php echo $registro['email'];?></td>
+                        <td><?php echo $registro['celular'];?></td>
+                        <td><?php echo $registro['nombre_unidad'];?></td>
+                        <td><?php echo $registro['nombre_area'];?></td>
+                        <td><?php echo $registro['nombre_carrera'];?></td>
+                        <td><?php echo $registro['tipo'];?></td>
+                        <td><?php echo $registro['consulta'];?></td>
+                        <td><?php echo $registro['origen'];?></td>
+                        <td><?php echo date("d-m-Y",strtotime($registro['fecha']));?></td>
+                    </tr>
+                    <?php endforeach; ?> 
+                    <?php else: ?>
+                    <tr><td colspan="13" style="text-align: center;" >No existen registros</td></tr>
+                    <?php endif; ?>
             </table>            
         </div>
         <div class="col-md-12">            

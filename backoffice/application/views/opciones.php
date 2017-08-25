@@ -49,7 +49,7 @@
                     <td>
                         <div class="checkbox">
                           <label>
-                              <input class="checkbox-estado" type="checkbox" value="<?php echo $opcion['id'];?>" <?php if($opcion['estado']==1) { echo 'checked'; } ?> >
+                              <input class="checkbox-estado checkbox-estado-opciones" type="checkbox" value="<?php echo $opcion['id'];?>" <?php if($opcion['estado']==1) { echo 'checked'; } ?> >
                           </label>
                         </div>
                     </td>

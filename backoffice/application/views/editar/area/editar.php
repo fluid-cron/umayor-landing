@@ -41,7 +41,7 @@
                     <input type="text" name="new_area" id="new_area" class="form-control input_new" placeholder="Ingrese aquí el nuevo nombre de la area seleccionada">
                 </div>
               </div>                      
-              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Submit">
+              <input class="btn btn-primary pull-right btn-lg" type="submit" value="Guardar">
             </form>            
                        
         </div>

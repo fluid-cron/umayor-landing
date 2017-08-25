@@ -5,28 +5,35 @@ $blanco   : #fff;
 $rojo     : #a4222b;
 $verde    : #12636b;
 $error    : #fbaba5;
+$naranjo: #E96B00;
 
 html {
     font-size: 18px;
     body {
         font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 18px;
     }
+}
+
+.text-white {
+    color: $blanco;
 }
 
 header {
     background-color: $amarillo;    
     .row-right {
-        position: absolute;
-        bottom: 0;
+        position: absolute;        
         width: 100%;
+        bottom: 0;        
     }    
     .logo-header {
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;               
-        height: initial;
+        padding-top: 1rem;
+        padding-bottom: 1rem;               
+        height: auto;
         width: 80%;
         margin-right: auto;
         margin-left: auto;
+        display: block;
     }
     .block-information {
         bottom: 0px;
@@ -82,6 +89,9 @@ header {
     .block-right-buttons {
         /*margin-bottom: -1px !important;*/
     }
+    .derecho {
+        display: none;
+    }
 }
 
 .content {
@@ -91,9 +101,14 @@ header {
         background-position: right;
         background-size: cover;
         display: none;
+        height: 100% !important;
     }    
     .green {
         background-color: $verde;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        height: 100%;
+        position: relative;
     }
     .form-title {
         font-size: 1.8rem;
@@ -110,9 +125,12 @@ header {
 }
 
 footer {
+    position: relative;
+    /*padding-right: 0 !important;
+    padding-left: 0 !important;*/
     background-color: #3f4042;   
     img {
-        height: 5rem;
+        /*height: 5rem;*/
     }
     .linea {
         width: 100%;
@@ -123,15 +141,25 @@ footer {
     .text-middle {
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-size: .6rem;
-        top: 1.7rem;
+        top: 1.6rem;
         position: relative;
-        p {
-            min-height: 2.5rem;
-        }
+    }
+    .left {
+        margin-top: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .right{
+        margin-top: 1.6rem;
+        margin-bottom: 1rem;        
     }
     p {
-        
+        padding-bottom: 1rem;
     }
+}
+
+.nopadding {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .msje-gracias {
@@ -144,6 +172,8 @@ form {
         .form-control {
             padding: 0.4rem 0.75rem;    
             font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 1rem !important;
+            border: 0 !important;
         }
     }
     .select2 {
@@ -154,21 +184,43 @@ form {
         margin-left: auto;
         margin-right: auto;
         display: block;
-        background: url(../images/enviar.png) no-repeat;
-        background-size: cover;
-        padding: .8rem !important;
-        color: #a4222b;
+        /*background: url(../images/enviar.png) no-repeat;
+        background-size: cover;*/
+        padding: .4rem !important;
+        color: $blanco;
         cursor: pointer;
         font-family: 'Open Sans Condensed', sans-serif;
         font-size: 1rem;
+        background-color: #F19700;      
+        border-right: 6px #E96B00 solid;
+        margin-top: 10px;
         &:active {
             @extend .btn-enviar;
         }
         &:hover {
+            color: $blanco;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
     }
+    .ver-politicas {
+        color: $blanco;
+        margin-top: 5px;
+        position: relative;
+        display: block;
+        font-size: .8rem;
+        text-decoration: underline;
+        text-align: center;
+    }
 }
+
+.select2-selection--single {
+    padding: 0.2rem !important;
+}
+
+.select2-selection__arrow {
+    top: 6px !important;
+}
+
 .select2-results__options {
   line-height: 1 !important;              
 } 
@@ -236,7 +288,12 @@ form {
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-    html {
+    header {
+    .logo-header {
+        width: 50%;
+    }    
+    }
+    /*html {
         font-size: 17px;
     }
     .logo-header {
@@ -272,7 +329,8 @@ form {
             margin-left: 0px !important;
             margin-right: initial !important;            
         }
-    }    
+    } 
+    */
 }
 
 // Medium devices (tablets, 768px and up)
@@ -292,7 +350,65 @@ form {
     }
     .block-information {
         display: block !important;
+    }      
+    footer {
+        .left {
+            margin-left: 3rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .right{
+            margin-right: 3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;        
+        }        
+    }
+        
+    .logo-header {
+        height: 4rem !important;
+        width: initial !important;
+        margin-right: initial !important;
+        margin-left: initial !important;
+        padding-left: 2rem;
+    }
+    .block-formulario-online {       
+        display: block !important;
+        font-size: initial !important;
+    }
+    .block-information {        
+        display: block !important;
+        font-size: initial !important;
     }        
+    
+    .mobile {
+        display:none;
+    }    
+    
+    .content {
+        .fondo-left {
+            display: block;
+        }
+    }
+    form {
+        .form-group {  
+            max-width: 350px;
+        }
+        .btn-enviar {
+            margin-left: 0px !important;
+            margin-right: initial !important;            
+        }
+    } 
+    header {
+    .derecho {
+        display: block;
+    }
+    }
+    .ver-politicas {
+       margin-left: 2px;
+       font-size: .8rem;
+       text-align: initial !important;
+       display: inline !important;
+    }
 }
 
 // Large devices (desktops, 992px and up)

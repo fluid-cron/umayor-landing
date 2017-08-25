@@ -69,7 +69,13 @@ $route['opciones/(:any)'] = 'app/opciones';
 $route['opciones']        = 'app/opciones';
 
 $route['(:any)'] = 'app';
-$route['/']        = 'app';
+$route['/']      = 'app';
+
+$route['ingreso/listar'] = 'ingreso/listar';
+$route['ingreso/listar/(:any)'] = 'ingreso/listar';
+
+$route['ingreso/agregar'] = 'ingreso/agregarIngreso';
+$route['ingreso/editar']  = 'ingreso/editarIngreso';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

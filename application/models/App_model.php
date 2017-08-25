@@ -1,13 +1,6 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of unidad_model
+ * Description of app_model
  *
  * @author cronstudio_manuel
  */
@@ -50,7 +43,7 @@ class App_model extends CI_Model {
                  ->from('opciones as o,carreras_cursos_programas as c')
                  ->group_start()
                  ->where('o.id_unidad='.$id_unidad)
-                ->where('o.id_area='.$id_area)
+                 ->where('o.id_area='.$id_area)
                  ->where('o.id_carrera=c.id_carrera')
                  ->where('o.estado=1')
                  ->group_end()
@@ -61,6 +54,15 @@ class App_model extends CI_Model {
         //echo $this->db->last_query();
         return $query->result_array();
 
+    }
+    
+    public function getTiposIngreso() {
+        $this->db->select('*')
+                  ->from('ingresos')
+                  ->where('estado',1)
+                  ->order_by('nombre','asc');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
 }
