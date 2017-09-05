@@ -11,21 +11,21 @@
         <div class="col-xs-12">            
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4 hidden-sm hidden-xs">
-                    <img class="left img-responsive center-block" src="http://localhost/umayor/assets/images/logo-left.png">                    
+                    <img class="left img-responsive center-block" src="<?php echo base_url('assets/images/logo-left.png') ?>">                    
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4" style="padding-top: 10px;">
                     <span class="text-middle"><p class="text-white text-center text-uppercase">calidad reacreditada de chile y estados unidos</p></span>
                 </div>     
                 <div class="col-xs-12 col-sm-4 col-md-4 hidden-sm hidden-xs">
-                    <img class="right img-responsive center-block" src="http://localhost/umayor/assets/images/logo-right.png">                            
+                    <img class="right img-responsive center-block" src="<?php echo base_url('assets/images/logo-right.png') ?>">                            
                 </div> 
             </div>
             <div class="row hidden-md hidden-lg">
                 <div class="col-xs-6">
-                    <img class="left img-responsive center-block" src="http://localhost/umayor/assets/images/logo-left.png">                    
+                    <img class="left img-responsive center-block" src="<?php echo base_url('assets/images/logo-left.png') ?>">                    
                 </div>
                 <div class="col-xs-6 hidden-md hidden-lg">
-                    <img class="right img-responsive center-block" src="http://localhost/umayor/assets/images/logo-right.png">                            
+                    <img class="right img-responsive center-block" src="<?php echo base_url('assets/images/logo-right.png') ?>">                            
                 </div>           
             </div>
         </div>                   

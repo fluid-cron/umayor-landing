@@ -12,7 +12,7 @@ jQuery.validator.addMethod("lettersonly", function(value, element){
 
 $("#rut").Rut({
    format_on: 'keyup'   
-})
+});
 
 $("#unidades").change(function() {
    
@@ -20,18 +20,43 @@ $("#unidades").change(function() {
     
     $.ajax({
       method: "POST",
-      url: base_url+"data/getAreas.php",
+      url: base_url+"data/getEstadoUnidadIngreso",
+      dataType: "json",
       data: { id: id }
     }).done(function( msg ) {
-       $("#areas").html('<option value="">Seleccionar area</option>');
-       $.each(msg,function(index,value) {
-           $("#areas").append('<option value="'+value.id+'">'+value.nombre+'</option>');
-       });       
-    });
-    
-    $("#carreras").rules("add",{ required: true });
-    //$("#carreras").rules("remove","required");
-    $("#areas").focus();       
+        
+        if( msg.estado_tipo_ingreso==1 ) {
+            
+            if( !$("#tipo_ingreso").parent().is(":visible") ) {
+                $("#tipo_ingreso").parent().show();
+                $("#tipo_ingreso").rules("add",{ required: true });   
+                resizefn();  
+            }
+        }else{
+            
+            if( $("#tipo_ingreso").parent().is(":visible") ) {
+                $("#tipo_ingreso").parent().hide();  
+                $("#tipo_ingreso").rules("remove","required");  
+                resizefn();  
+            }            
+        }
+       
+        $.ajax({
+          method: "POST",
+          url: base_url+"data/getAreas",
+          data: { id: id }
+        }).done(function( msg ) {
+           $("#areas").html('<option value="">Seleccionar area</option>');
+           $.each(msg,function(index,value) {
+               $("#areas").append('<option value="'+value.id+'">'+value.nombre+'</option>');
+           });       
+        });
+
+        $("#carreras").rules("add",{ required: true });
+        //$("#carreras").rules("remove","required");
+        $("#areas").focus();           
+ 
+    });       
    
 });
 
@@ -42,7 +67,7 @@ $("#areas").change(function() {
     
     $.ajax({
       method: "POST",
-      url: base_url+"data/getCarreras.php",
+      url: base_url+"data/getCarreras",
       data: { id_unidad:id_unidad,id_area: id_area }
     }).done(function( msg ) {
         
@@ -53,7 +78,7 @@ $("#areas").change(function() {
        });  
 
         $.ajax({
-            url: base_url+'data/check.php',
+            url: base_url+'data/check',
             type: 'POST',
             data: {
                     "unidades" : $("#unidades").val(),
@@ -107,7 +132,7 @@ jQuery("#formx").validate({
             estado_submit = 1;
         
             $.ajax({
-                url: base_url+'data/check.php',
+                url: base_url+'data/check',
                 type: 'POST',
                 data: {
                         "unidades" : $("#unidades").val(),
@@ -117,7 +142,7 @@ jQuery("#formx").validate({
                 success: function(data) {
 
                     $.ajax({
-                        url: base_url+'app/guardarFormulario.php',
+                        url: base_url+'app/guardarFormulario',
                         type: 'POST',
                         data: $("#formx").serialize(),
                         success: function(data) {
@@ -169,41 +194,58 @@ $("#tipo_ingreso").select2({
     minimumResultsForSearch: Infinity
 });
 
-$("#unidades").change(function(){
+$("#unidades").change(function() {
+    //console.log($(this).val());
+    $("#formx").addClass('margin');
+    $(".group-areas,.group-carreras,.group-tipo-ingreso,.group-consulta").hide();
     $("#unidades").valid();
+    $(".group-areas").show();
+    $(".group-carreras").show();
+    //$(".group-tipo-ingreso").show();
+    $(".group-consulta").show();
+    resizefn();
+    
+    /*$(".group-areas").show('fast',function() {
+        resizefn();
+        $(".group-carreras").show('fast',function() {
+            resizefn();
+            $(".group-tipo-ingreso").show('fast',function() {
+                resizefn();
+                $(".group-consulta").show('fast',function() {
+                    resizefn();
+                });
+            });
+        });
+    });*/
 });
 
-$("#areas").change(function(){
+$("#areas").change(function() {
     $("#areas").valid();
 });
 
-$("#carreras").change(function(){
+$("#carreras").change(function() {
     $("#carreras").valid();
 });
 
-$("#tipo_ingreso").change(function(){
+$("#tipo_ingreso").change(function() {
     $("#tipo_ingreso").valid();
 });
 
 $(document).ready(function() {
-  var h = $(this).height();
-  var header = $("header").height();
-  var footer = $("footer").height();
-  var new_h = h-(header+footer);
-  $(".content,.content2").height( new_h+"px" );
-  $(".derecho").height(header+"px");  
-  
+    resizefn();
 });
 
-//if( origen=="desktop" ) {
-$(document).resize(function() {
-    
-  var h = $(this).height();
+$(document).resize(function() {    
+    resizefn();  
+});
+
+function resizefn() {
+  var w = $(document).width();
+  var h = $(document).height();
   var header = $("header").height();
   var footer = $("footer").height();
   var new_h = h-(header+footer);
-  $(".content,.content2").height( new_h+"px" );
-  $(".derecho").height(header+"px");
-  
-});
-//}
+  $(".content2").height( new_h+"px" );
+  //$(".content,.content2").height( new_h+"px" );
+  $(".derecho").height(header+"px");    
+}

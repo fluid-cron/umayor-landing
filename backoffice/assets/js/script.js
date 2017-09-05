@@ -8,10 +8,10 @@ $(document).ready(function() {
        
         $.ajax({
           method: "POST",
-          url: base_url+"data/editarEstadoOpciones.php",
+          url: base_url+"data/editarEstadoOpciones",
           data: { id: ele }
         }).done(function( msg ) {
-            console.log( msg );
+            //console.log( msg );
         });       
        
    });
@@ -22,10 +22,10 @@ $(document).ready(function() {
        
         $.ajax({
           method: "POST",
-          url: base_url+"data/editarEstadoIngreso.php",
+          url: base_url+"data/editarEstadoIngreso",
           data: { id: ele }
         }).done(function( msg ) {
-            console.log( msg );
+            //console.log( msg );
         });       
        
    });   
@@ -55,14 +55,14 @@ $(document).ready(function() {
     });
     
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
     });   
    
 });
 
 $(document).ready(function() {
   var h = $(this).height();
-  console.log(h);
+  
   var header = $("header").height();
   var footer = $("footer").height();
   var new_h = h-(header+footer);
@@ -83,4 +83,26 @@ $(document).resize(function() {
   $("body").height( new_h+"px" );
   
   
+});
+
+$("#select-unidad").change(function() {
+   
+    var id_tipo_ingreso = $(this).val();
+
+    $.ajax({
+      method: "POST",
+      url: base_url+"data/getEstadoUnidadIngreso",
+      dataType: "json",
+      data: { id: id_tipo_ingreso }
+    }).done(function( msg ) {
+        $("#new_unidad").val(msg.nombre_unidad);
+        
+        if( msg.estado_tipo_ingreso==1 ) {
+            $("#estado_tipo_ingreso").prop('checked',true);
+        }else{
+            $("#estado_tipo_ingreso").prop('checked',false);          
+        }
+ 
+    });      
+   
 });

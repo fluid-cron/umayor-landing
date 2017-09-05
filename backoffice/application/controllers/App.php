@@ -226,6 +226,7 @@ class App extends CI_Controller {
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         
             $unidad  = $this->input->post("unidad");
+            $estado_tipo_ingreso  = $this->input->post("estado_tipo_ingreso");
             
             $this->form_validation->set_rules('unidad', 'Unidad', 'trim|required');
             
@@ -239,7 +240,7 @@ class App extends CI_Controller {
             
             } else {
                 
-                $result = $this->unidad->agregarUnidad($unidad);
+                $result = $this->unidad->agregarUnidad($unidad,$estado_tipo_ingreso);
                 
                 if($result=="ok") {
                 
@@ -377,6 +378,7 @@ class App extends CI_Controller {
         
             $unidad  = $this->input->post("unidad");
             $new_unidad = $this->input->post("new_unidad");
+            $estado_tipo_ingreso = $this->input->post("estado_tipo_ingreso");
             
             $this->form_validation->set_rules('unidad', 'Unidad', 'trim|required');
             $this->form_validation->set_rules('new_unidad', 'nuevo nombre', 'trim|required');
@@ -393,7 +395,7 @@ class App extends CI_Controller {
             
             } else {
                 
-                $result = $this->unidad->editarUnidad($unidad,$new_unidad);
+                $result = $this->unidad->editarUnidad($unidad,$new_unidad,$estado_tipo_ingreso);
                 
                 if($result=="ok") {
                 

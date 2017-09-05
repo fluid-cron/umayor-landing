@@ -31,6 +31,16 @@
                         <input type="text" class="form-control" id="inputUnidad" name="unidad" placeholder="Ingresa aquí la unidad">
                     </div>
                 </div>
+              <div class="form-group form-group-md">
+                <label class="col-sm-2 control-label">Tipo ingreso (habilitado/deshabilitado)</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                          <input id="estado_tipo_ingreso" name="estado_tipo_ingreso" data-toggle="tooltip" data-placement="top" data-original-title="Mostrar campo de tipo ingreso en el formulario" class="checkbox-estado checkbox-estado-ingreso" type="checkbox" value="1" />
+                      </label>
+                    </div>
+                </div>
+              </div>              
              
               <input class="btn btn-primary pull-right btn-lg" type="submit" value="Guardar">
             </form>            

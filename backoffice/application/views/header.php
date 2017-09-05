@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title><?php echo TITLE;?></title>
-
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('favicon.ico') ?>" />
 	<!-- css -->
 	<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
         <link href="<?php echo base_url('assets/js/select2/css/select2.css') ?>" rel="stylesheet">

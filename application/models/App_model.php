@@ -64,5 +64,10 @@ class App_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function getEstadoUnidadIngreso($id) {
+        $query = $this->db->get_where('unidades', array('id_unidad' => $id));
+        return $query->row();
+    }    
 
 }

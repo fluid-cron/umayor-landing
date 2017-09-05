@@ -8,10 +8,10 @@ $error    : #fbaba5;
 $naranjo: #E96B00;
 
 html {
-    font-size: 18px;
+        font-size: 18px;
     body {
         font-family: 'Open Sans Condensed', sans-serif;
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
@@ -167,6 +167,9 @@ footer {
 }
 
 form {
+    &.margin {
+        padding-bottom: 145px;
+    }
     .form-group {
         margin-bottom: .3rem;     
         .form-control {
@@ -186,7 +189,7 @@ form {
         display: block;
         /*background: url(../images/enviar.png) no-repeat;
         background-size: cover;*/
-        padding: .4rem !important;
+        padding: .2rem !important;
         color: $blanco;
         cursor: pointer;
         font-family: 'Open Sans Condensed', sans-serif;
@@ -284,6 +287,10 @@ form {
     .select2-selection__placeholder {
         color: $blanco !important;
     }        
+}
+
+.group-areas,.group-carreras,.group-consulta,.group-tipo-ingreso {
+    display: none;
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -418,7 +425,7 @@ form {
     }
     .content {
         .form-title {
-            font-size: 2.4rem;
+            font-size: 2rem;
         }        
     }
 }
@@ -430,7 +437,7 @@ form {
     }
     .content {
         .form-title {
-            font-size: 2.9rem;
+            font-size: 2rem;
         }        
     }    
 }

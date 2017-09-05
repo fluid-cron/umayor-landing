@@ -22,8 +22,8 @@
         <div class="col-md-12" > 
 
             <!--form class="form-horizontal"-->
-             <?php $attributes = array('class' => 'form-horizontal', 'id' => 'formx'); ?>
-              <?php echo form_open('',$attributes) ?>
+              <?php $attributes = array('class' => 'form-horizontal', 'id' => 'formx'); ?>
+              <?php echo form_open('',$attributes); ?>
               <div class="form-group form-group-md">
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">Unidad</label>
                 <div class="col-sm-10">
@@ -35,6 +35,16 @@
                     </select>  
                 </div>
               </div>
+              <div class="form-group form-group-md">
+                <label class="col-sm-2 control-label">Tipo ingreso (habilitado/deshabilitado)</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                          <input id="estado_tipo_ingreso" name="estado_tipo_ingreso" data-toggle="tooltip" data-placement="top" data-original-title="Mostrar campo de tipo ingreso en el formulario" class="checkbox-estado checkbox-estado-ingreso" type="checkbox" value="1" />
+                      </label>
+                    </div>
+                </div>
+              </div>             
               <div class="form-group form-group-md">
                 <label class="col-sm-2 control-label">Nuevo nombre</label>
                 <div class="col-sm-10">

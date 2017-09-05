@@ -156,4 +156,52 @@ class Data extends CI_Controller {
         
     }
     
+    function getEstadoUnidadIngreso() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        
+            $this->load->model('Unidad_model','unidad');
+
+            $id = $this->input->post("id");
+
+            if( $id!="" ) {
+               $data = $this->unidad->getEstadoUnidadIngreso($id);
+            $this->output
+                 ->set_content_type('application/json')
+                 ->set_output(json_encode($data));  
+            }else{
+                echo "err";
+            }
+
+        }else{
+            echo "err";
+        }        
+             
+    }    
+    
+    function editarEstadoUnidadIngreso() {
+        
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        
+            $this->load->model('Unidad_model','unidad');
+
+            $id = $this->input->post("id");
+
+            if( $id!="" ) {
+               $data = $this->unidad->editarEstadoUnidadIngreso($id);
+               
+            /*$this->output
+                 ->set_content_type('application/json')
+                 ->set_output(json_encode($data));                  
+            */
+            }else{
+                echo "err";
+            }
+
+        }else{
+            echo "err";
+        }        
+             
+    }
+    
 }

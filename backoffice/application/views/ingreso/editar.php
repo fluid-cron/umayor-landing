@@ -27,7 +27,7 @@
                 <label class="col-sm-2 control-label" for="formGroupInputLarge">Ingreso</label>
                 <div class="col-sm-10">
                     <select class="form-control input-md" name="ingreso" id="select-unidad" >
-                        <option value="">Seleccionar Unidad</option>
+                        <option value="">Seleccionar Ingreso</option>
                         <?php foreach ($ingresos as $ingreso): ?>
                         <option value="<?php echo $ingreso['id'];?>" <?php if( set_value('nombre')==$ingreso['id'] ) { echo 'selected'; } ?> ><?php echo $ingreso['nombre'];?></option>
                         <?php endforeach; ?>   

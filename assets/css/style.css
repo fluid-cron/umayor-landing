@@ -3,7 +3,7 @@ html {
   font-size: 18px; }
   html body {
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 18px; }
+    font-size: 16px; }
 
 .text-white {
   color: #fff; }
@@ -124,6 +124,8 @@ footer {
 .msje-gracias {
   display: none; }
 
+form.margin {
+  padding-bottom: 145px; }
 form .form-group {
   margin-bottom: .3rem; }
   form .form-group .form-control {
@@ -140,7 +142,7 @@ form .btn-enviar, form .btn-enviar:active {
   display: block;
   /*background: url(../images/enviar.png) no-repeat;
   background-size: cover;*/
-  padding: .4rem !important;
+  padding: .2rem !important;
   color: #fff;
   cursor: pointer;
   font-family: 'Open Sans Condensed', sans-serif;
@@ -224,6 +226,9 @@ form .ver-politicas {
   color: #fff !important; }
   .error .select2-selection__placeholder {
     color: #fff !important; }
+
+.group-areas, .group-carreras, .group-consulta, .group-tipo-ingreso {
+  display: none; }
 
 @media (min-width: 576px) {
   header .logo-header {
@@ -333,12 +338,12 @@ form .ver-politicas {
     font-size: 19px; }
 
   .content .form-title {
-    font-size: 2.4rem; } }
+    font-size: 2rem; } }
 @media (min-width: 1200px) {
   html {
     /*font-size: 20px;*/ }
 
   .content .form-title {
-    font-size: 2.9rem; } }
+    font-size: 2rem; } }
 
 /*# sourceMappingURL=style.css.map */

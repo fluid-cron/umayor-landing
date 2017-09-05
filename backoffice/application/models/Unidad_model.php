@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of unidad_model
  *
@@ -25,7 +18,9 @@ class Unidad_model extends CI_Model {
         
     }
     
-    public function agregarUnidad($unidad) {
+    public function agregarUnidad($unidad,$estado_tipo_ingreso) {
+        
+        $estado_tipo_ingreso = ($estado_tipo_ingreso=="") ? 0:1;
         
         $this->db->select('*')
              ->from('unidades')
@@ -36,7 +31,8 @@ class Unidad_model extends CI_Model {
         if( $cantidad==0 ) {
             
             $data = array(
-                'nombre_unidad'  => $unidad
+                'nombre_unidad' => $unidad,
+                'estado_tipo_ingreso' => $estado_tipo_ingreso
             );
 
             if( $this->db->insert('unidades', $data) ) {
@@ -49,19 +45,49 @@ class Unidad_model extends CI_Model {
             return "ya existe";
         }      
         
-    } 
+    }
     
-    public function editarUnidad($unidad,$new_unidad) {
+    public function editarUnidad($unidad,$new_unidad,$estado_tipo_ingreso) {
+        
+        $estado_tipo_ingreso = ($estado_tipo_ingreso=="") ? 0:1;
 
         $this->db->set('nombre_unidad', $new_unidad);
+        $this->db->set('estado_tipo_ingreso', $estado_tipo_ingreso);
         $this->db->where('id_unidad', $unidad);
         
         if( $this->db->update('unidades') ) {
             return "ok";
         }else{
             return "error";
-        }                        
+        }
         
+    }
+
+    public function getEstadoUnidadIngreso($id) {
+        $query = $this->db->get_where('unidades', array('id_unidad' => $id));
+        return $query->row();
+    }
+    
+    public function editarEstadoUnidadIngreso($id) {
+
+        $this->db->select("estado_tipo_ingreso")
+             ->from("unidades")   
+             ->where("id_unidad",$id);
+        $query = $this->db->get();
+        $estado_actual = $query->row('estado_tipo_ingreso');
+        
+        if( $estado_actual==0 ) {
+            $this->db->set('estado_tipo_ingreso',1);
+            $this->db->where('id_unidad',$id);
+            $this->db->update('estado_tipo_ingreso');            
+        }else{
+            $this->db->set('estado_tipo_ingreso',0);
+            $this->db->where('id_unidad',$id);
+            $this->db->update('estado_tipo_ingreso');            
+        }
+        
+        return "ok";
+
     }
 
 }

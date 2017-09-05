@@ -13,7 +13,7 @@
                     <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
                   </div>
                   <button type="submit" class="btn btn-default">Buscar</button>
-                  <button type="button" onclick="location.href='<?php echo base_url().'opciones/';?>'" class="btn btn-default">x</button>              
+                  <button type="button" onclick="location.href='<?php echo base_url().'opciones';?>'" class="btn btn-default">x</button>              
                 </form>  
             </div>            
             
@@ -22,7 +22,7 @@
                   <div class="form-group">
                     <input type="text" name="q" value="<?php echo $q;?>" class="form-control" placeholder="Texto a buscar">
                   </div>                  
-                  <button type="button" onclick="location.href='<?php echo base_url().'opciones/';?>'" class="btn btn-default pull-right">x</button>              
+                  <button type="button" onclick="location.href='<?php echo base_url().'opciones';?>'" class="btn btn-default pull-right">x</button>              
                   <button type="submit" class="btn btn-default pull-right">Buscar</button>
                 </form>
                 <br>  

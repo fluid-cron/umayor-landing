@@ -121,6 +121,6 @@ class Ingreso_model extends CI_Model {
         
         return "ok";
 
-    }    
+    }
 
 }

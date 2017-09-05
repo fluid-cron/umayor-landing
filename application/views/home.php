@@ -28,11 +28,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row row-derecha">
                         <div class="col-xs-12 text-white">
                             
-                            <p class="msje-gracias">Solcitud recibida con éxito.</p>
-                            
+                            <p class="msje-gracias">Solcitud recibida con éxito.</p>                            
                             <form name="formx" id="formx" action="" method="POST" > 
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="nombre" placeholder="Nombre" maxlength="30">
@@ -56,18 +55,19 @@
                                       <?php echo '<option value="'.$unidad["id"].'" >'.$unidad["nombre"].'</option>';?>
                                       <?php endforeach;?>
                                   </select>
-                                </div>       
-                                <div class="form-group">
+                                </div> 
+
+                                <div class="form-group group-areas">
                                   <select class="form-control" name="areas" id="areas" >
                                       <option value="">Área</option>                                    
                                   </select>
                                 </div>   
-                                <div class="form-group">
+                                <div class="form-group group-carreras">
                                     <select class="form-control" name="carreras" id="carreras" >
                                       <option value="">Programa</option>                                    
                                   </select>
                                 </div>   
-                                <div class="form-group">
+                                <div class="form-group group-tipo-ingreso">
                                     <select class="form-control" name="tipo_ingreso" id="tipo_ingreso" >
                                       <option value="">Tipo ingreso</option>    
                                       <?php foreach($tipos_ingresos as $tipo_ingreso): ?>
@@ -75,13 +75,15 @@
                                       <?php endforeach;?>                                      
                                   </select>
                                 </div>                               
-                                <div class="form-group">
+                                <div class="form-group group-consulta">
                                     <textarea class="form-control" name="consulta" id="consulta" placeholder="Consulta" rows="3" maxlength="170"></textarea>
-                                </div>                              
+                                </div>
+                                
                                 <button type="submit" value="ENVIAR" class="btn btn-enviar" >
                                     ENVIAR
                                 </button>
                                 <a href="#" target="_blank" class="ver-politicas">Ver políticas de privacidad</a>
+                                
                             </form>                            
                             
                         </div>

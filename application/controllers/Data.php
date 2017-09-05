@@ -57,4 +57,21 @@ class Data extends CI_Controller {
         
     }
     
+    function getEstadoUnidadIngreso() {
+        
+        $this->load->model('App_model','app');
+
+        $id = $this->input->post("id");
+
+        if( $id!="" ) {
+           $data = $this->app->getEstadoUnidadIngreso($id);
+        $this->output
+             ->set_content_type('application/json')
+             ->set_output(json_encode($data));  
+        }else{
+            echo "err";
+        }   
+             
+    }    
+    
 }
