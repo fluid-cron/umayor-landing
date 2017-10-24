@@ -52,4 +52,23 @@ class App extends CI_Controller {
         
     }
 
+    public function gracias() {
+
+        $this->load->library('user_agent');   
+        
+        $origen = "desktop";
+        if ($this->agent->is_mobile()) {
+            $origen = "mobile";
+        }
+
+        $data_header = array(
+            'title'=>'Landing Convenios',
+            'origen'=> $origen
+        );
+
+        $this->parser->parse('template/header',$data_header);
+        $this->load->view('gracias');
+        $this->load->view('template/footer');        
+    }
+
 }

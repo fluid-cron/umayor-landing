@@ -82,7 +82,7 @@
                                 <button type="submit" value="ENVIAR" class="btn btn-enviar" >
                                     ENVIAR
                                 </button>
-                                <a href="#" target="_blank" class="ver-politicas">Ver políticas de privacidad</a>
+                                <a href="pdf/politicas.pdf" target="_blank" class="ver-politicas">Ver políticas de privacidad</a>
                                 
                             </form>                            
                             

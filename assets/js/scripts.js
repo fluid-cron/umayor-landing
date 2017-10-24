@@ -154,7 +154,8 @@ jQuery("#formx").validate({
                                 var footer = $("footer").height();
                                 var new_h = h-(header+footer);
                                 $(".content,.content2").height( new_h+"px" );                            
-                                $(".msje-gracias").fadeIn();
+                                //$(".msje-gracias").fadeIn();
+                                location.href = "gracias";
                             }else{
                                 $("form").show();
                                 $(".msje-gracias").hide();
@@ -235,17 +236,20 @@ $(document).ready(function() {
     resizefn();
 });
 
-$(document).resize(function() {    
+$(window).resize(function() {
     resizefn();  
 });
+
+var header = $("header").height();
+$(".derecho").height(header+"px");
 
 function resizefn() {
   var w = $(document).width();
   var h = $(document).height();
-  var header = $("header").height();
+  header = $("header").height();
   var footer = $("footer").height();
   var new_h = h-(header+footer);
   $(".content2").height( new_h+"px" );
   //$(".content,.content2").height( new_h+"px" );
-  $(".derecho").height(header+"px");    
+  //$(".derecho").height(header+"px");    
 }

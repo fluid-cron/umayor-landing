@@ -122,7 +122,7 @@ footer {
   padding-right: 0; }
 
 .msje-gracias {
-  display: none; }
+  margin-top: 15px; }
 
 form.margin {
   padding-bottom: 145px; }
@@ -152,6 +152,7 @@ form .btn-enviar, form .btn-enviar:active {
   margin-top: 10px; }
   form .btn-enviar:hover {
     color: #fff;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 form .ver-politicas {
   color: #fff;
@@ -345,5 +346,7 @@ form .ver-politicas {
 
   .content .form-title {
     font-size: 2rem; } }
+
+
 
 /*# sourceMappingURL=style.css.map */
