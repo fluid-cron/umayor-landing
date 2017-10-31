@@ -24,8 +24,10 @@ $("#unidades").change(function() {
       dataType: "json",
       data: { id: id }
     }).done(function( msg ) {
+
+        console.info(msg);
         
-        if( msg.estado_tipo_ingreso==1 ) {
+        if( msg.estado_tipo_ingreso==1 ) {           
             
             if( !$("#tipo_ingreso").parent().is(":visible") ) {
                 $("#tipo_ingreso").parent().show();

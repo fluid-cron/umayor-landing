@@ -17,7 +17,7 @@ CREATE TABLE `registros` (
   `origen` varchar(20) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 -- 2017-07-21 19:58:20

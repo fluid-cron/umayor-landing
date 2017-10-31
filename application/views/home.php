@@ -31,8 +31,10 @@
                     <div class="row row-derecha">
                         <div class="col-xs-12 text-white">
                             
-                            <p class="msje-gracias">Solcitud recibida con éxito.</p>                            
-                            <form name="formx" id="formx" action="" method="POST" > 
+                            <!--p class="msje-gracias">Solcitud recibida con éxito.</p-->
+                            <form name="formx" id="formx" action="" method="POST" >
+                                <input type="hidden" name="idmedio" value="<?php echo $idmedio;?>" > 
+                                <input type="hidden" name="nombre_medio" value="<?php echo $nombre_medio;?>" > 
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="nombre" placeholder="Nombre" maxlength="30">
                                 </div>

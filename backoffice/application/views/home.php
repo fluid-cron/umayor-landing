@@ -72,6 +72,8 @@
                     <th>Programa</th>
                     <th>Tipo</th>
                     <th>Mensaje</th>
+                    <th>Medio</th>
+                    <th>Nombre Medio</th>
                     <th>Origen</th>
                     <th>Fecha</th>
                 </tr>
@@ -89,6 +91,8 @@
                         <td><?php echo $registro['nombre_carrera'];?></td>
                         <td><?php echo $registro['tipo'];?></td>
                         <td><?php echo $registro['consulta'];?></td>
+                        <td><?php echo $registro['medio'];?></td>
+                        <td><?php echo $registro['nombre_medio'];?></td>
                         <td><?php echo $registro['origen'];?></td>
                         <td><?php echo date("d-m-Y",strtotime($registro['fecha']));?></td>
                     </tr>

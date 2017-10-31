@@ -31,7 +31,7 @@
                     <div class="row row-derecha">
                         <div class="col-xs-12 text-white">
                             
-                            <p class="msje-gracias">Solcitud recibida con éxito.</p>                                                                                   
+                            <p class="msje-gracias">Gracias por comunicarte con Universidad Mayor.</p>                                                                                   
                             
                         </div>
                     </div>

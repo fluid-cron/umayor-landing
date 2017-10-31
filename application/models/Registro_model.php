@@ -17,6 +17,8 @@ class Registro_model extends CI_Model {
     public $tipo_ingreso;
     public $consulta;
     public $origen = "desktop";
+    public $medio;
+    public $nombre_medio;
     public $fecha;
     
     public function guardarFormulario() {
@@ -35,6 +37,8 @@ class Registro_model extends CI_Model {
         $this->id_carrera   = $this->input->post("carreras");   
         $this->tipo_ingreso = $this->input->post("tipo_ingreso");   
         $this->consulta     = $this->input->post("consulta");
+        $this->medio        = $this->input->post("idmedio");
+        $this->nombre_medio = $this->input->post("nombre_medio");
         $this->fecha        = date("Y-m-d H:i:s");
         
         if( $this->db->insert('registros',$this) ) {

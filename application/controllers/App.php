@@ -10,13 +10,26 @@ class App extends CI_Controller {
         $origen = "desktop";
         if ($this->agent->is_mobile()) {
             $origen = "mobile";
-        }        
+        }
+
+        $idmedio = $this->uri->segment(1);
 
         $this->load->model("App_model","app");
         
         $unidades = $this->app->getUnidades();
-        $tipos_ingresos = $this->app->getTiposIngreso();        
-        
+        $tipos_ingresos = $this->app->getTiposIngreso();    
+        $nombre_medio = @$this->app->getNombreMedioById($idmedio);
+
+        if( $idmedio=="" ) {
+            $idmedio = "10000";
+        }else{
+
+            if( $nombre_medio=="" ) {
+                $idmedio = "";
+            }
+
+        }
+
         $data_header = array(
             'title'=>'Landing Convenios',
             'origen'=> $origen
@@ -24,6 +37,8 @@ class App extends CI_Controller {
 
         $data['unidades'] = $unidades;
         $data['tipos_ingresos'] = $tipos_ingresos;
+        $data['idmedio'] = $idmedio;
+        $data['nombre_medio'] = $nombre_medio;
 
         $this->parser->parse('template/header',$data_header);
         $this->load->view('home',$data);

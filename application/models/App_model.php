@@ -70,4 +70,9 @@ class App_model extends CI_Model {
         return $query->row();
     }    
 
+    public function getNombreMedioById($id) {
+        $query = $this->db->get_where('medios', array('idmedios' => $id));
+        return $query->row()->nombre;
+    }        
+
 }
